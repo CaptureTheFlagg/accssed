@@ -85,14 +85,15 @@
     .resource-body a { font-size: 0.875rem; font-weight: 600; }
 
     /* LETTER TEMPLATES */
-    .letter-box { background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; padding: 28px; margin-bottom: 20px; }
+    .letter-box { background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; padding: 28px; margin-bottom: 20px; max-width: 100%; overflow: hidden; }
     .letter-box:last-child { margin-bottom: 0; }
     .letter-box h3 { font-size: 1.1rem; margin-bottom: 12px; }
     .letter-box .letter-desc { font-size: 0.9rem; color: var(--text-sec); margin-bottom: 20px; line-height: 1.65; }
-    .letter-text { background: var(--section-bg); border: 1px solid var(--border); border-radius: 10px; padding: 22px; font-size: 0.88rem; color: var(--text); line-height: 1.8; font-family: var(--font-body); }
-    .letter-text .fill-in { background: #FFF0EC; color: var(--accent-red); border-radius: 4px; padding: 1px 4px; font-style: italic; font-weight: 500; white-space: nowrap; }
-    .letter-text p { color: var(--text); margin-bottom: 12px; }
+    .letter-text { background: var(--section-bg); border: 1px solid var(--border); border-radius: 10px; padding: 22px; font-size: 0.88rem; color: var(--text); line-height: 1.8; font-family: var(--font-body); max-width: 100%; word-wrap: break-word; overflow-wrap: break-word; }
+    .letter-text .fill-in { background: #FFF0EC; color: var(--accent-red); border-radius: 4px; padding: 1px 4px; font-style: italic; font-weight: 500; white-space: normal; word-wrap: break-word; overflow-wrap: break-word; }
+    .letter-text p { color: var(--text); margin-bottom: 12px; word-wrap: break-word; overflow-wrap: break-word; }
     .letter-text p:last-child { margin-bottom: 0; }
+    @media (max-width: 480px) { .letter-box { padding: 18px; } .letter-text { padding: 16px; font-size: 0.84rem; } }
 
     /* CALLOUT */
     .callout { border-radius: 12px; padding: 18px 22px; margin: 24px 0; display: flex; gap: 12px; align-items: flex-start; }
