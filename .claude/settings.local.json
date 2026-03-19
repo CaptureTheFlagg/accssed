@@ -3,7 +3,9 @@
     "allow": [
       "Bash(grep -rn \"aria-hidden=\"\"true\"\">[^<]\" *.html)",
       "Bash(grep -rn \"aria-hidden=\"\"true\"\">[^<1-9]\" *.html)",
-      "Bash(grep -rn \"VERIFY\" *.html)"
+      "Bash(grep -rn \"VERIFY\" *.html)",
+      "Bash(grep -rn \"Transitioning to College\" *.html)",
+      "Bash(cd:*)"
     ]
   }
 }
