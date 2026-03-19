@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — AccessEd</title>
+  <meta name="description" content="Real answers to the questions students actually ask about disability accommodations, evaluations, IEPs, 504 Plans, and their legal rights in school." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:          #FFFDF7;
+      --text:        #1C1C1C;
+      --text-sec:    #4A4A4A;
+      --accent-red:  #D94F2B;
+      --accent-blue: #1A56DB;
+      --white:       #FFFFFF;
+      --card-bg:     #FFFFFF;
+      --section-bg:  #F5F0E8;
+      --border:      #E0D9CE;
+      --font-head:   'Plus Jakarta Sans', sans-serif;
+      --font-body:   'Inter', sans-serif;
+      --max-text:    720px;
+      --max-layout:  1100px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 17px; line-height: 1.75; }
+    a { color: var(--accent-blue); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--accent-red); }
+    a:focus-visible { outline: 3px solid var(--accent-blue); outline-offset: 3px; border-radius: 3px; }
+
+    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--border); height: 60px; }
+    .nav-inner { max-width: var(--max-layout); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--font-head); font-weight: 800; font-size: 1.2rem; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--accent-red); }
+    .nav-logo:hover { color: var(--text); }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--text-sec); text-decoration: none; padding: 6px 10px; border-radius: 6px; transition: background 0.15s, color 0.15s; white-space: nowrap; }
+    .nav-links a:hover { background: var(--section-bg); color: var(--text); }
+    .nav-links a.active { color: var(--accent-red); font-weight: 600; }
+    .nav-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 8px; border-radius: 8px; }
+    .nav-toggle:focus-visible { outline: 3px solid var(--accent-blue); outline-offset: 2px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile { display: none; position: fixed; top: 60px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 16px 24px 24px; z-index: 99; }
+    .nav-mobile.open { display: block; }
+    .nav-mobile ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+    .nav-mobile a { font-size: 1rem; font-weight: 500; color: var(--text-sec); text-decoration: none; padding: 10px 12px; border-radius: 8px; min-height: 44px; display: flex; align-items: center; }
+    .nav-mobile a:hover, .nav-mobile a:focus-visible { background: var(--section-bg); color: var(--text); }
+    .nav-mobile a.active { color: var(--accent-red); font-weight: 600; }
+    @media (min-width: 820px) { .nav-toggle { display: none; } .nav-links { display: flex; } }
+    @media (max-width: 819px) { .nav-links { display: none; } .nav-toggle { display: flex; } }
+
+    main { padding-top: 60px; }
+
+    .hero { background: var(--text); color: var(--white); padding: 64px 24px 72px; text-align: center; }
+    .hero-inner { max-width: var(--max-text); margin: 0 auto; }
+    .hero-eyebrow { font-size: 0.875rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #A8B4C0; margin-bottom: 20px; }
+    .hero h1 { font-family: var(--font-head); font-size: clamp(2rem, 5.5vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 20px; }
+    .hero h1 em { font-style: normal; color: #F4845F; }
+    .hero-desc { font-size: 1.05rem; color: #BDC8D4; max-width: 520px; margin: 0 auto; line-height: 1.7; }
+
+    .page-section { padding: 56px 24px; }
+    .section-inner { max-width: var(--max-text); margin: 0 auto; }
+
+    .section-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-red); margin-bottom: 12px; }
+    h2 { font-family: var(--font-head); font-size: clamp(1.4rem, 3.5vw, 1.9rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 16px; }
+    p { color: var(--text-sec); margin-bottom: 14px; }
+    p:last-child { margin-bottom: 0; }
+    p strong { color: var(--text); font-weight: 600; }
+
+    /* CALLOUT */
+    .callout { border-radius: 12px; padding: 18px 22px; margin: 24px 0; display: flex; gap: 12px; align-items: flex-start; }
+    .callout.blue { background: #EEF4FF; border: 1px solid #C7D9FF; }
+    .callout-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+    .callout-body { font-size: 0.875rem; line-height: 1.65; color: #1E3A5F; }
+    .callout-body strong { font-weight: 600; }
+
+    /* FAQ ACCORDION */
+    .faq-list { margin-top: 24px; display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: none; }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      cursor: pointer;
+      text-align: left;
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.4;
+      transition: background 0.15s;
+    }
+
+    .faq-question:hover { background: var(--section-bg); }
+    .faq-question:focus-visible { outline: 3px solid var(--accent-blue); outline-offset: -3px; }
+
+    .faq-question[aria-expanded="true"] { background: var(--section-bg); }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--section-bg);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+      transition: background 0.15s, transform 0.2s;
+    }
+
+    .faq-question[aria-expanded="true"] .faq-icon {
+      background: var(--accent-red);
+      border-color: var(--accent-red);
+      transform: rotate(45deg);
+    }
+
+    .faq-icon svg { display: block; }
+    .faq-question[aria-expanded="true"] .faq-icon svg line { stroke: var(--white); }
+
+    .faq-answer {
+      display: none;
+      padding: 0 24px 20px;
+      background: var(--section-bg);
+    }
+
+    .faq-answer.open { display: block; }
+
+    .faq-answer p { font-size: 0.93rem; color: var(--text-sec); line-height: 1.7; margin-bottom: 12px; }
+    .faq-answer p:last-child { margin-bottom: 0; }
+    .faq-answer p strong { color: var(--text); font-weight: 600; }
+    .faq-answer ul { padding-left: 20px; color: var(--text-sec); font-size: 0.93rem; line-height: 1.7; margin-bottom: 12px; }
+    .faq-answer ul:last-child { margin-bottom: 0; }
+    .faq-answer ul li { margin-bottom: 6px; }
+
+    .cta-block { background: var(--text); color: var(--white); padding: 56px 24px; text-align: center; }
+    .cta-inner { max-width: 520px; margin: 0 auto; }
+    .cta-block h2 { font-family: var(--font-head); font-size: clamp(1.4rem, 3.5vw, 1.9rem); font-weight: 800; letter-spacing: -0.02em; color: var(--white); margin-bottom: 12px; }
+    .cta-block p { color: #BDC8D4; margin-bottom: 28px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-red); color: var(--white); font-family: var(--font-head); font-size: 0.95rem; font-weight: 700; text-decoration: none; padding: 13px 24px; border-radius: 10px; min-height: 44px; transition: background 0.15s; }
+    .btn-primary:hover { background: #C0411F; color: var(--white); }
+
+    footer { background: var(--section-bg); border-top: 1px solid var(--border); padding: 40px 24px; }
+    .footer-inner { max-width: var(--max-layout); margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 32px; }
+    @media (min-width: 640px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr; gap: 40px; } }
+    .footer-brand .nav-logo { display: inline-block; margin-bottom: 10px; font-size: 1.1rem; }
+    .footer-brand p { font-size: 0.875rem; color: var(--text-sec); max-width: 300px; line-height: 1.6; }
+    .footer-col h3 { font-family: var(--font-head); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col a { font-size: 0.9rem; color: var(--text-sec); text-decoration: none; transition: color 0.15s; }
+    .footer-col a:hover { color: var(--accent-red); }
+    .footer-disclaimer { border-top: 1px solid var(--border); padding-top: 24px; margin-top: 8px; max-width: var(--max-layout); margin-left: auto; margin-right: auto; }
+    .footer-disclaimer p { font-size: 0.8rem; color: var(--text-sec); line-height: 1.6; }
+    .footer-disclaimer p + p { margin-top: 8px; }
+
+    @media (max-width: 480px) { .hero { padding: 48px 20px 56px; } .faq-question { padding: 18px 18px; } .faq-answer { padding: 0 18px 18px; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="AccessEd home">Access<span>Ed</span></a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="504-vs-iep.html">504 vs IEP</a></li>
+        <li><a href="rights.html">Your Rights</a></li>
+        <li><a href="process.html">The Process</a></li>
+        <li><a href="accommodations.html">Accommodations</a></li>
+        <li><a href="advocate.html">Self-Advocacy</a></li>
+        <li><a href="college.html">College</a></li>
+        <li><a href="faq.html" class="active" aria-current="page">FAQ</a></li>
+        <li><a href="resources.html">Resources</a></li>
+      </ul>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-mobile" id="mobile-nav" role="dialog" aria-label="Navigation menu">
+    <ul role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="504-vs-iep.html">504 vs IEP</a></li>
+      <li><a href="rights.html">Your Rights</a></li>
+      <li><a href="process.html">The Process</a></li>
+      <li><a href="accommodations.html">Accommodations</a></li>
+      <li><a href="advocate.html">Self-Advocacy</a></li>
+      <li><a href="college.html">Transitioning to College</a></li>
+      <li><a href="faq.html" class="active" aria-current="page">FAQ</a></li>
+      <li><a href="resources.html">Resources</a></li>
+    </ul>
+  </div>
+
+  <main id="main-content">
+
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-inner">
+        <p class="hero-eyebrow">Straight answers</p>
+        <h1 id="hero-heading">Real questions.<br /><em>Real answers.</em></h1>
+        <p class="hero-desc">These are the questions students actually ask — the ones that aren't always answered clearly in official documents. No runaround. Just the answer.</p>
+      </div>
+    </section>
+
+    <section class="page-section" aria-labelledby="faq-heading">
+      <div class="section-inner">
+        <p class="section-label">Frequently asked questions</p>
+        <h2 id="faq-heading">What students want to know</h2>
+
+        <div class="callout blue" role="note">
+          <p class="callout-body"><strong>This is not legal advice.</strong> These answers reflect federal U.S. law. State laws and individual school policies vary. For serious disputes, consult a disability rights organization or attorney.</p>
+        </div>
+
+        <div class="faq-list" role="list">
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
+              <span>Do I need a diagnosis to request an evaluation?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <line x1="6" y1="1" x2="6" y2="11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer" id="faq-1">
+              <p><strong>No. You do not need a diagnosis to request an evaluation.</strong></p>
+              <p>You — or your parent or guardian — have the right to request a free evaluation from your school at any time. Your school cannot require you to have an existing diagnosis before they evaluate you. In fact, the purpose of the evaluation is to determine whether you have a disability that's affecting your education.</p>
+              <p>All that's needed is a reason to suspect that a disability might be affecting your ability to learn. Your school also has an independent obligation called "Child Find" to identify students who may need support — even if no one requests an evaluation.</p>
+              <p>Put your request in writing. That's when the legal process begins. <a href="resources.html">See a sample request letter.</a></p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
+              <span>Can my school deny my request for an evaluation?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <line x1="6" y1="1" x2="6" y2="11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer" id="faq-2">
+              <p><strong>Yes, but only in writing — and they must explain why and tell you about your rights.</strong></p>
+              <p>If your school decides not to evaluate you, they must send you a written notice explaining their decision and their reasoning. This is called Prior Written Notice. They must also inform you of your right to challenge the decision.</p>
+              <p>If you believe the denial was wrong, you can:</p>
+              <ul>
+                <li>Request mediation with the school district</li>
+                <li>File a state complaint with your state's department of education</li>
+                <li>Request a due process hearing (for IDEA) or file a complaint with the Office for Civil Rights (for Section 504)</li>
+              </ul>
+              <p>A school that simply says "no" verbally without written notice is not following the law.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
+              <span>What if I disagree with the school's evaluation results?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <line x1="6" y1="1" x2="6" y2="11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer" id="faq-3">
+              <p><strong>You have the right to request an Independent Educational Evaluation (IEE).</strong></p>
+              <p>If you disagree with the school's evaluation, you can request that the school pay for an independent evaluation by a qualified professional outside the school. This is called an IEE at public expense.</p>
+              <p>The school can either agree to fund the IEE or file for a due process hearing to defend their own evaluation. If they file for due process and the hearing officer agrees with the school's evaluation, you still have the right to get an independent evaluation — you'd just pay for it yourself.</p>
+              <p>Your school must consider the results of any IEE you get, whether it was paid for by them or by you.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
+              <span>Does a 504 Plan give me the same protections as an IEP?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <line x1="6" y1="1" x2="6" y2="11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer" id="faq-4">
+              <p><strong>No. A 504 Plan has fewer procedural protections than an IEP.</strong></p>
+              <p>Both plans give you the right to accommodations. But IEPs come with significantly stronger legal protections, including:</p>
+              <ul>
+                <li>Strict federal timelines for evaluations and plan development</li>
+                <li>Annual review requirements</li>
+                <li>The right to a due process hearing if you disagree with a decision</li>
+                <li>More detailed requirements for what must be in the plan</li>
+                <li>The right to an independent evaluation at public expense</li>
+              </ul>
+              <p>A 504 Plan still gives you legal recourse — through the Office for Civil Rights — but the process is less formal and there are fewer specific federal requirements your school must follow. <a href="504-vs-iep.html">Read the full comparison.</a></p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-5">
+              <span>What if my teacher isn't following my accommodations?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <line x1="6" y1="1" x2="6" y2="11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer" id="faq-5">
+              <p>Start by talking to the teacher directly — in writing, so there's a record. Many missed accommodations are oversights. Keep the conversation calm and specific: "My plan includes X — can we make sure that happens going forward?"</p>
+              <p>If it continues, escalate: contact your case manager or 504 coordinator, then the principal, then the district's special education director. If it still isn't resolved, you can file a state complaint (for IDEA violations) or a complaint with the Office for Civil Rights (for Section 504 violations).</p>
+              <p>Document every instance with dates, classes, and what happened. That record matters if you need to escalate. <a href="advocate.html">See the full escalation guide.</a></p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-6">
+              <span>What if my school says they don't have the budget for my accommodations?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <line x1="6" y1="1" x2="6" y2="11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer" id="faq-6">
+              <p><strong>That is not a legal excuse. Lack of budget does not exempt a school from its legal obligations.</strong></p>
+              <p>Under IDEA, your school is required to provide a Free Appropriate Public Education regardless of cost. Under Section 504, schools cannot deny accommodations because they cost money. Schools receive federal funding specifically to support students with disabilities.</p>
+              <p>If your school is using budget as a reason to deny services that are required by your IEP or 504 Plan, document the conversation and escalate. This is a violation of federal law.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-7">
+              <span>Do my accommodations transfer to college?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <line x1="6" y1="1" x2="6" y2="11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer" id="faq-7">
+              <p><strong>No. Nothing transfers automatically.</strong></p>
+              <p>Your IEP ends at high school graduation. It is not enforceable in college. Your 504 Plan also doesn't transfer — though Section 504 and the ADA still apply in college, you must re-register with your college's disability services office from scratch.</p>
+              <p>You'll need to provide documentation, go through an intake process, and re-request your accommodations every semester at most colleges. No one will come looking for you — you have to initiate everything. <a href="college.html">Read the full college transition guide.</a></p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-8">
+              <span>What is a Summary of Performance, and do I get one?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <line x1="6" y1="1" x2="6" y2="11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer" id="faq-8">
+              <p>The Summary of Performance (SOP) is a document your school is required to give IEP students when their IEP ends — at graduation or when you age out. It summarizes your academic achievement, your functional abilities, and recommendations for supporting your needs in postsecondary settings.</p>
+              <p><strong>Most students have never heard of it. But if you have an IEP, you are entitled to one.</strong></p>
+              <p>It's not automatically handed to you — ask your case manager before graduation. Ask that it be detailed and specific about your functional needs and the accommodations that helped. It can be useful when registering with college disability services. <a href="college.html">Learn more about the college transition.</a></p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-9">
+              <span>Can I lose my IEP if my grades improve?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <line x1="6" y1="1" x2="6" y2="11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer" id="faq-9">
+              <p><strong>No. Eligibility for special education is not based on your grades.</strong></p>
+              <p>IEP eligibility is based on whether you have a qualifying disability and whether that disability affects your educational performance in a way that requires special education services. If you're passing your classes <em>because</em> of your accommodations and services, that doesn't mean you no longer need them.</p>
+              <p>Your school cannot remove your IEP just because your grades are good. They can only change your eligibility determination through a formal reevaluation process — and you (or your parent/guardian) must be notified and can challenge the decision.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-10">
+              <span>What is the Office for Civil Rights (OCR) and when do I contact them?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <line x1="6" y1="1" x2="6" y2="11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer" id="faq-10">
+              <p>The Office for Civil Rights (OCR) is a division of the U.S. Department of Education that enforces federal civil rights laws in schools — including Section 504 and the ADA. If your school discriminates against you because of your disability, or fails to provide accommodations required under Section 504, you can file a complaint with the OCR.</p>
+              <p>You don't need a lawyer to file. It's free. The OCR will investigate and, if they find a violation, require the school to take corrective action.</p>
+              <p><strong>When to contact OCR:</strong></p>
+              <ul>
+                <li>Your school refuses to evaluate you for a disability</li>
+                <li>Your school denies accommodations without a valid reason</li>
+                <li>Your school consistently fails to follow your 504 Plan</li>
+                <li>You believe you're being discriminated against because of your disability</li>
+              </ul>
+              <p>Exhaust your school-level options first (teacher, case manager, principal, district). OCR is a last resort, but it's a real and effective one. <a href="resources.html">Find the OCR complaint link on the Resources page.</a></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-block" aria-labelledby="cta-heading">
+      <div class="cta-inner">
+        <h2 id="cta-heading">Need something more?</h2>
+        <p>Find official government sources, disability rights organizations, and sample letters on the Resources page.</p>
+        <a href="resources.html" class="btn-primary">
+          Go to Resources
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" aria-label="AccessEd home">Access<span>Ed</span></a>
+        <p>A student-written resource about disability rights and K-12 accommodations. Written by a junior with ADHD, anxiety, and fine motor delay — for every student who deserves better.</p>
+      </div>
+      <nav class="footer-col" aria-label="Know your rights">
+        <h3>Know Your Rights</h3>
+        <ul role="list">
+          <li><a href="rights.html">Your Legal Rights</a></li>
+          <li><a href="504-vs-iep.html">504 vs IEP</a></li>
+          <li><a href="process.html">The Process</a></li>
+          <li><a href="accommodations.html">Accommodations</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-col" aria-label="Take action">
+        <h3>Take Action</h3>
+        <ul role="list">
+          <li><a href="advocate.html">Self-Advocacy</a></li>
+          <li><a href="college.html">Going to College</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="resources.html">Resources</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-disclaimer">
+      <p><strong>Disclaimer:</strong> This website is for informational purposes only and does not constitute legal advice. All legal information is based on federal U.S. law. Individual state laws and district policies may vary. If you have a legal dispute with your school, consult a qualified education attorney or disability rights organization.</p>
+      <p>AccessEd is an independent student project. It is not affiliated with any school, government agency, or legal organization. Laws and policies can change — verify important details with official sources.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav
+    const toggle = document.querySelector('.nav-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    toggle.addEventListener('click', function () {
+      const isOpen = mobileNav.classList.contains('open');
+      mobileNav.classList.toggle('open', !isOpen);
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      toggle.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+    });
+    mobileNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileNav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+      });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+        mobileNav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const answerId = btn.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+        // Close all others
+        document.querySelectorAll('.faq-question').forEach(function (other) {
+          if (other !== btn) {
+            other.setAttribute('aria-expanded', 'false');
+            const otherId = other.getAttribute('aria-controls');
+            document.getElementById(otherId).classList.remove('open');
+          }
+        });
+
+        // Toggle this one
+        btn.setAttribute('aria-expanded', String(!isOpen));
+        answer.classList.toggle('open', !isOpen);
+      });
+    });
+  </script>
+
+</body>
+</html>

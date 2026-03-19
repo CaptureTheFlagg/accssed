@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Accommodation Process — AccessEd</title>
+  <meta name="description" content="How to request an evaluation, what happens next, and the exact timelines your school must follow. Step by step, with real deadlines." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:          #FFFDF7;
+      --text:        #1C1C1C;
+      --text-sec:    #4A4A4A;
+      --accent-red:  #D94F2B;
+      --accent-blue: #1A56DB;
+      --white:       #FFFFFF;
+      --card-bg:     #FFFFFF;
+      --section-bg:  #F5F0E8;
+      --border:      #E0D9CE;
+      --font-head:   'Plus Jakarta Sans', sans-serif;
+      --font-body:   'Inter', sans-serif;
+      --max-text:    720px;
+      --max-layout:  1100px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 17px; line-height: 1.75; }
+    a { color: var(--accent-blue); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--accent-red); }
+    a:focus-visible { outline: 3px solid var(--accent-blue); outline-offset: 3px; border-radius: 3px; }
+
+    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--border); height: 60px; }
+    .nav-inner { max-width: var(--max-layout); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--font-head); font-weight: 800; font-size: 1.2rem; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--accent-red); }
+    .nav-logo:hover { color: var(--text); }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--text-sec); text-decoration: none; padding: 6px 10px; border-radius: 6px; transition: background 0.15s, color 0.15s; white-space: nowrap; }
+    .nav-links a:hover { background: var(--section-bg); color: var(--text); }
+    .nav-links a.active { color: var(--accent-red); font-weight: 600; }
+    .nav-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 8px; border-radius: 8px; }
+    .nav-toggle:focus-visible { outline: 3px solid var(--accent-blue); outline-offset: 2px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile { display: none; position: fixed; top: 60px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 16px 24px 24px; z-index: 99; }
+    .nav-mobile.open { display: block; }
+    .nav-mobile ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+    .nav-mobile a { font-size: 1rem; font-weight: 500; color: var(--text-sec); text-decoration: none; padding: 10px 12px; border-radius: 8px; min-height: 44px; display: flex; align-items: center; }
+    .nav-mobile a:hover, .nav-mobile a:focus-visible { background: var(--section-bg); color: var(--text); }
+    .nav-mobile a.active { color: var(--accent-red); font-weight: 600; }
+    @media (min-width: 820px) { .nav-toggle { display: none; } .nav-links { display: flex; } }
+    @media (max-width: 819px) { .nav-links { display: none; } .nav-toggle { display: flex; } }
+
+    main { padding-top: 60px; }
+
+    .hero { background: var(--text); color: var(--white); padding: 64px 24px 72px; text-align: center; }
+    .hero-inner { max-width: var(--max-text); margin: 0 auto; }
+    .hero-eyebrow { font-size: 0.875rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #A8B4C0; margin-bottom: 20px; }
+    .hero h1 { font-family: var(--font-head); font-size: clamp(2rem, 5.5vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 20px; }
+    .hero h1 em { font-style: normal; color: #F4845F; }
+    .hero-desc { font-size: 1.05rem; color: #BDC8D4; max-width: 520px; margin: 0 auto; line-height: 1.7; }
+
+    .page-section { padding: 56px 24px; }
+    .section-inner { max-width: var(--max-text); margin: 0 auto; }
+    .alt-bg { background: var(--section-bg); }
+
+    .section-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-red); margin-bottom: 12px; }
+    h2 { font-family: var(--font-head); font-size: clamp(1.4rem, 3.5vw, 1.9rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 16px; }
+    p { color: var(--text-sec); margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+    p strong { color: var(--text); font-weight: 600; }
+
+    /* TIMELINE STEPS */
+    .timeline { margin-top: 32px; display: flex; flex-direction: column; gap: 0; }
+    .step { display: flex; gap: 24px; position: relative; padding-bottom: 32px; }
+    .step:last-child { padding-bottom: 0; }
+    .step-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+    .step-number { width: 44px; height: 44px; border-radius: 50%; background: var(--accent-red); color: var(--white); font-family: var(--font-head); font-size: 1rem; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; z-index: 1; }
+    .step-line { width: 2px; background: var(--border); flex: 1; margin-top: 8px; min-height: 24px; }
+    .step:last-child .step-line { display: none; }
+    .step-content { padding-top: 9px; flex: 1; }
+    .step-content h3 { font-family: var(--font-head); font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 6px; }
+    .step-content p { font-size: 0.9rem; color: var(--text-sec); margin-bottom: 8px; line-height: 1.65; }
+    .step-content p:last-child { margin-bottom: 0; }
+    .step-content p strong { color: var(--text); }
+    .step-tag { display: inline-block; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; }
+    .tag-deadline { background: #FFF0EC; color: var(--accent-red); }
+    .tag-you { background: #EEF4FF; color: var(--accent-blue); }
+    .tag-school { background: #F0FDF4; color: #166534; }
+    .tag-both { background: var(--section-bg); color: var(--text); }
+
+    /* TIMELINE CALLOUTS */
+    .callout { border-radius: 12px; padding: 20px 24px; margin: 28px 0; display: flex; gap: 14px; align-items: flex-start; }
+    .callout.blue { background: #EEF4FF; border: 1px solid #C7D9FF; }
+    .callout.orange { background: #FFF7F5; border: 1px solid #FFD6CC; }
+    .callout.green { background: #F0FDF4; border: 1px solid #A7F3D0; }
+    .callout.yellow { background: #FFFBEB; border: 1px solid #FDE68A; }
+    .callout-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+    .callout-body { font-size: 0.9rem; line-height: 1.65; }
+    .callout.blue .callout-body { color: #1E3A5F; }
+    .callout.orange .callout-body { color: #6B2510; }
+    .callout.green .callout-body { color: #14532D; }
+    .callout.yellow .callout-body { color: #78350F; }
+    .callout-body strong { font-weight: 600; }
+
+    /* TIMELINE SUMMARY BOX */
+    .timeline-summary { background: var(--card-bg); border: 2px solid var(--accent-red); border-radius: 16px; padding: 28px; margin: 32px 0; }
+    .timeline-summary h3 { font-family: var(--font-head); font-size: 1.1rem; font-weight: 800; margin-bottom: 16px; }
+    .timeline-row { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--border); gap: 16px; }
+    .timeline-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .timeline-event { font-size: 0.9rem; color: var(--text-sec); flex: 1; }
+    .timeline-days { font-family: var(--font-head); font-size: 1.1rem; font-weight: 800; color: var(--accent-red); white-space: nowrap; }
+
+    /* 504 PATH */
+    .fiveo4-box { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-top: 24px; }
+    .fiveo4-box h3 { font-family: var(--font-head); font-size: 1.1rem; font-weight: 800; margin-bottom: 12px; }
+    .fiveo4-box p { font-size: 0.93rem; color: var(--text-sec); margin-bottom: 10px; }
+    .fiveo4-box p:last-child { margin-bottom: 0; }
+    .fiveo4-box p strong { color: var(--text); }
+
+    /* ESCALATION */
+    .escalation-list { list-style: none; padding: 0; margin-top: 20px; counter-reset: esc-counter; }
+    .escalation-list li { counter-increment: esc-counter; display: flex; gap: 14px; margin-bottom: 18px; align-items: flex-start; }
+    .escalation-list li::before { content: counter(esc-counter); display: flex; align-items: center; justify-content: center; min-width: 28px; height: 28px; border-radius: 50%; background: var(--section-bg); border: 1px solid var(--border); font-family: var(--font-head); font-size: 0.8rem; font-weight: 800; color: var(--text); flex-shrink: 0; margin-top: 3px; }
+    .escalation-list li div { font-size: 0.93rem; color: var(--text-sec); line-height: 1.6; }
+    .escalation-list li div strong { color: var(--text); font-weight: 600; display: block; }
+
+    .cta-block { background: var(--text); color: var(--white); padding: 56px 24px; text-align: center; }
+    .cta-inner { max-width: 520px; margin: 0 auto; }
+    .cta-block h2 { font-family: var(--font-head); font-size: clamp(1.4rem, 3.5vw, 1.9rem); font-weight: 800; letter-spacing: -0.02em; color: var(--white); margin-bottom: 12px; }
+    .cta-block p { color: #BDC8D4; margin-bottom: 28px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-red); color: var(--white); font-family: var(--font-head); font-size: 0.95rem; font-weight: 700; text-decoration: none; padding: 13px 24px; border-radius: 10px; min-height: 44px; transition: background 0.15s; }
+    .btn-primary:hover { background: #C0411F; color: var(--white); }
+
+    footer { background: var(--section-bg); border-top: 1px solid var(--border); padding: 40px 24px; }
+    .footer-inner { max-width: var(--max-layout); margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 32px; }
+    @media (min-width: 640px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr; gap: 40px; } }
+    .footer-brand .nav-logo { display: inline-block; margin-bottom: 10px; font-size: 1.1rem; }
+    .footer-brand p { font-size: 0.875rem; color: var(--text-sec); max-width: 300px; line-height: 1.6; }
+    .footer-col h3 { font-family: var(--font-head); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col a { font-size: 0.9rem; color: var(--text-sec); text-decoration: none; transition: color 0.15s; }
+    .footer-col a:hover { color: var(--accent-red); }
+    .footer-disclaimer { border-top: 1px solid var(--border); padding-top: 24px; margin-top: 8px; max-width: var(--max-layout); margin-left: auto; margin-right: auto; }
+    .footer-disclaimer p { font-size: 0.8rem; color: var(--text-sec); line-height: 1.6; }
+    .footer-disclaimer p + p { margin-top: 8px; }
+
+    @media (max-width: 480px) { .hero { padding: 48px 20px 56px; } .step { gap: 16px; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="AccessEd home">Access<span>Ed</span></a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="504-vs-iep.html">504 vs IEP</a></li>
+        <li><a href="rights.html">Your Rights</a></li>
+        <li><a href="process.html" class="active" aria-current="page">The Process</a></li>
+        <li><a href="accommodations.html">Accommodations</a></li>
+        <li><a href="advocate.html">Self-Advocacy</a></li>
+        <li><a href="college.html">College</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="resources.html">Resources</a></li>
+      </ul>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-mobile" id="mobile-nav" role="dialog" aria-label="Navigation menu">
+    <ul role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="504-vs-iep.html">504 vs IEP</a></li>
+      <li><a href="rights.html">Your Rights</a></li>
+      <li><a href="process.html" class="active" aria-current="page">The Process</a></li>
+      <li><a href="accommodations.html">Accommodations</a></li>
+      <li><a href="advocate.html">Self-Advocacy</a></li>
+      <li><a href="college.html">Transitioning to College</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="resources.html">Resources</a></li>
+    </ul>
+  </div>
+
+  <main id="main-content">
+
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-inner">
+        <p class="hero-eyebrow">Step by step</p>
+        <h1 id="hero-heading">There's a process.<br /><em>Here's how it works.</em></h1>
+        <p class="hero-desc">Getting accommodations isn't random — there's a defined process with real deadlines. Once you submit a written request, the clock starts and your school must act. Here's exactly what happens.</p>
+      </div>
+    </section>
+
+    <!-- WRITTEN REQUEST -->
+    <section class="page-section" aria-labelledby="request-heading">
+      <div class="section-inner">
+        <p class="section-label">Step zero</p>
+        <h2 id="request-heading">It starts with a written request</h2>
+
+        <div class="callout green" role="note">
+          <div class="callout-body">
+            <strong>Written request = the official starting gun.</strong> Verbal conversations, phone calls, and hallway chats don't count. Once you (or a parent) submit a written request for an evaluation, your school is legally obligated to respond. Send it via email or certified letter. Keep a copy.
+          </div>
+        </div>
+
+        <p>Your request doesn't need to be formal or use legal language. It just needs to be in writing and ask for an evaluation. Something as simple as: <em>"I am requesting that [School Name] evaluate my child for a disability that may be affecting their education."</em> That's enough to start the process. <a href="resources.html">Get a sample letter on the Resources page.</a></p>
+
+        <div class="callout orange" role="note">
+          <p class="callout-body"><strong>Important:</strong> You do NOT need a diagnosis to request an evaluation. The school evaluates you — you don't have to come in with paperwork from a doctor. Asking for an evaluation is your right regardless of whether you've been diagnosed.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- IEP PROCESS TIMELINE -->
+    <section class="page-section alt-bg" aria-labelledby="iep-process-heading">
+      <div class="section-inner">
+        <p class="section-label">The IEP path</p>
+        <h2 id="iep-process-heading">The IEP process, step by step</h2>
+        <p>If you're seeking an IEP under IDEA, here's exactly what happens — and when.</p>
+
+        <div class="timeline-summary" aria-label="IEP timeline at a glance">
+          <h3>Timeline at a glance</h3>
+          <div class="timeline-row">
+            <span class="timeline-event">School receives your written request</span>
+            <span class="timeline-days">Day 0</span>
+          </div>
+          <div class="timeline-row">
+            <span class="timeline-event">School must decide whether to evaluate (and notify you in writing)</span>
+            <span class="timeline-days">Varies by state</span>
+          </div>
+          <div class="timeline-row">
+            <span class="timeline-event">Evaluation must be complete (from parent/guardian consent)</span>
+            <span class="timeline-days">60 calendar days</span>
+            <span style="font-size:0.78rem;color:var(--text-sec);font-style:italic;display:block;margin-top:3px;">Federal baseline — your state may have a shorter timeline.</span>
+          </div>
+          <div class="timeline-row">
+            <span class="timeline-event">IEP must be developed after evaluation complete</span>
+            <span class="timeline-days">30 days</span>
+          </div>
+          <div class="timeline-row">
+            <span class="timeline-event">IEP annual review required</span>
+            <span class="timeline-days">Every year</span>
+          </div>
+          <div class="timeline-row">
+            <span class="timeline-event">Reevaluation required</span>
+            <span class="timeline-days">Every 3 years</span>
+          </div>
+        </div>
+
+        <nav class="timeline" aria-label="IEP process steps">
+
+          <div class="step">
+            <div class="step-left" aria-hidden="true">
+              <div class="step-number">1</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+              <span class="step-tag tag-you">You do this</span>
+              <h3>Submit a written request for evaluation</h3>
+              <p>Put your request in writing and send it to your school's principal or special education coordinator. Email counts — keep a copy. State that you're requesting an evaluation under IDEA for a suspected disability affecting your education.</p>
+              <p><strong>Tip:</strong> Note the date you sent it. Everything that follows is measured from this date.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-left" aria-hidden="true">
+              <div class="step-number">2</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+              <span class="step-tag tag-school">School does this</span>
+              <h3>School decides whether to evaluate</h3>
+              <p>Your school must respond to your request in writing. They can either agree to evaluate or decline — but if they decline, they must give you a written explanation and tell you about your right to challenge the decision.</p>
+              <p><strong>If they agree:</strong> They'll send you a written notice and a consent form. You (or a parent/guardian) must sign the consent form before the evaluation can begin. The 60-day evaluation clock starts when they receive your signed consent.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-left" aria-hidden="true">
+              <div class="step-number">3</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+              <span class="step-tag tag-deadline">60 calendar days</span>
+              <h3>School completes the evaluation</h3>
+              <p>Your school has 60 calendar days from the date they receive your signed consent to complete a comprehensive evaluation. This is a federal timeline under IDEA — some states have shorter timelines, but none can be longer.</p>
+              <p>The evaluation is free and must be conducted by qualified professionals. It may include academic testing, psychological evaluation, observation in class, and input from your teachers.</p>
+              <p><strong>Note:</strong> Some states have a preliminary step where the school decides whether to evaluate, which has its own timeline. Check your state's specific rules.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-left" aria-hidden="true">
+              <div class="step-number">4</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+              <span class="step-tag tag-deadline">30 days after evaluation</span>
+              <h3>IEP meeting and development</h3>
+              <p>After the evaluation is complete, the school has 30 days to hold an IEP meeting and develop your IEP. This meeting must include: a parent/guardian, a general education teacher, a special education teacher, a school administrator, and any relevant specialists.</p>
+              <p>You can also attend your own IEP meeting. <strong>You should attend.</strong> This is where decisions about your education are made, and your voice matters.</p>
+              <p>The IEP document must include: your current level of performance, annual goals, specific services and accommodations, how progress will be measured, and how much time you'll spend in general education.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-left" aria-hidden="true">
+              <div class="step-number">5</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+              <span class="step-tag tag-school">School does this</span>
+              <h3>IEP is implemented</h3>
+              <p>Once the IEP is finalized and signed, the school must begin implementing it as soon as possible. All your teachers should receive a copy (or at least know what's in it). If a teacher says they haven't seen your IEP, that's a problem — and you can report it.</p>
+              <p><strong>Keep your own copy.</strong> If your accommodations aren't being followed, having the document in hand makes it much easier to advocate for yourself.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-left" aria-hidden="true">
+              <div class="step-number">6</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+              <span class="step-tag tag-both">Ongoing</span>
+              <h3>Annual review and triennial reevaluation</h3>
+              <p>Your school must review your IEP at least once a year. At the annual review, your goals and services can be adjusted. You and your parents have the right to request a review at any time — you don't have to wait for the annual meeting.</p>
+              <p>Every three years, your school must conduct a full reevaluation to confirm you still qualify for special education services. You can decline the reevaluation if you already have sufficient data.</p>
+            </div>
+          </div>
+
+        </nav>
+      </div>
+    </section>
+
+    <!-- 504 PATH -->
+    <section class="page-section" aria-labelledby="fiveo4-heading">
+      <div class="section-inner">
+        <p class="section-label">The 504 path</p>
+        <h2 id="fiveo4-heading">How 504 Plans work differently</h2>
+        <p>The 504 process is similar in outline, but with fewer hard federal deadlines and less formal structure.</p>
+
+        <div class="fiveo4-box">
+          <h3>504 Plan process</h3>
+          <p>Like an IEP, it starts with a written request for evaluation. But Section 504 has <strong>no fixed federal timeline</strong> — the law says your school must act in a "reasonable time." In practice, many districts use a 30-day standard for each step, but this isn't required by federal law.</p>
+          <p>Your school must still evaluate you, determine eligibility, and document your accommodations. The evaluation doesn't have to be as comprehensive as an IEP evaluation, and the resulting plan doesn't have to meet the same detailed federal requirements.</p>
+          <p><strong>What this means for you:</strong> If your school is dragging its feet on a 504, you have less leverage on specific deadlines — but you still have the right to an evaluation and a response. Document everything, follow up in writing, and escalate if needed.</p>
+          <p>Some states have adopted their own 504 timelines. Check your state's department of education for specifics.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHEN SCHOOL MISSES DEADLINE -->
+    <section class="page-section alt-bg" aria-labelledby="escalation-heading">
+      <div class="section-inner">
+        <p class="section-label">If things go wrong</p>
+        <h2 id="escalation-heading">What to do if your school misses a deadline</h2>
+        <p>Schools sometimes miss timelines — intentionally or not. Here's how to escalate, in order.</p>
+
+        <div class="callout blue" role="note">
+          <p class="callout-body"><strong>This is not legal advice.</strong> These steps are general guidance. Every situation is different. For serious disputes, contact a disability rights organization or attorney.</p>
+        </div>
+
+        <ol class="escalation-list" aria-label="Escalation steps">
+          <li>
+            <div>
+              <strong>Document the missed deadline in writing</strong>
+              Send an email to your school's special education coordinator noting the date the deadline passed and asking when the next step will happen. A written paper trail matters.
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Contact the principal or district special education director</strong>
+              If the coordinator doesn't respond or resolve it, escalate to the principal. If still no action, contact the district's director of special education directly.
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>File a state complaint</strong>
+              Every state has a complaint process for IDEA violations. Your state's department of education must investigate within 60 days. This is free to file and you don't need a lawyer.
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>File a complaint with the Office for Civil Rights (OCR)</strong>
+              The OCR enforces Section 504 and the ADA. You can file a complaint at the U.S. Department of Education's website. There's no cost and you don't need an attorney.
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Request a due process hearing (IEP only)</strong>
+              Under IDEA, you have the right to a formal due process hearing if you have a dispute about your IEP. This is the most formal — and most adversarial — option. Consider consulting a disability rights attorney before going this route.
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-block" aria-labelledby="cta-heading">
+      <div class="cta-inner">
+        <h2 id="cta-heading">Know what you can ask for.</h2>
+        <p>Now that you understand the process, learn what specific accommodations exist — and how to ask for the ones that fit your situation.</p>
+        <a href="accommodations.html" class="btn-primary">
+          See common accommodations
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" aria-label="AccessEd home">Access<span>Ed</span></a>
+        <p>A student-written resource about disability rights and K-12 accommodations. Written by a junior with ADHD, anxiety, and fine motor delay — for every student who deserves better.</p>
+      </div>
+      <nav class="footer-col" aria-label="Know your rights">
+        <h3>Know Your Rights</h3>
+        <ul role="list">
+          <li><a href="rights.html">Your Legal Rights</a></li>
+          <li><a href="504-vs-iep.html">504 vs IEP</a></li>
+          <li><a href="process.html">The Process</a></li>
+          <li><a href="accommodations.html">Accommodations</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-col" aria-label="Take action">
+        <h3>Take Action</h3>
+        <ul role="list">
+          <li><a href="advocate.html">Self-Advocacy</a></li>
+          <li><a href="college.html">Going to College</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="resources.html">Resources</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-disclaimer">
+      <p><strong>Disclaimer:</strong> This website is for informational purposes only and does not constitute legal advice. All legal information is based on federal U.S. law. Individual state laws and district policies may vary. If you have a legal dispute with your school, consult a qualified education attorney or disability rights organization.</p>
+      <p>AccessEd is an independent student project. It is not affiliated with any school, government agency, or legal organization. Laws and policies can change — verify important details with official sources.</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    toggle.addEventListener('click', function () {
+      const isOpen = mobileNav.classList.contains('open');
+      mobileNav.classList.toggle('open', !isOpen);
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      toggle.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+    });
+    mobileNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileNav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+      });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+        mobileNav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources — AccessEd</title>
+  <meta name="description" content="Official government sources, disability rights organizations, sample request letters, and more — everything in one place." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:          #FFFDF7;
+      --text:        #1C1C1C;
+      --text-sec:    #4A4A4A;
+      --accent-red:  #D94F2B;
+      --accent-blue: #1A56DB;
+      --white:       #FFFFFF;
+      --card-bg:     #FFFFFF;
+      --section-bg:  #F5F0E8;
+      --border:      #E0D9CE;
+      --font-head:   'Plus Jakarta Sans', sans-serif;
+      --font-body:   'Inter', sans-serif;
+      --max-text:    720px;
+      --max-layout:  1100px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 17px; line-height: 1.75; }
+    a { color: var(--accent-blue); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--accent-red); }
+    a:focus-visible { outline: 3px solid var(--accent-blue); outline-offset: 3px; border-radius: 3px; }
+
+    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--border); height: 60px; }
+    .nav-inner { max-width: var(--max-layout); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--font-head); font-weight: 800; font-size: 1.2rem; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--accent-red); }
+    .nav-logo:hover { color: var(--text); }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--text-sec); text-decoration: none; padding: 6px 10px; border-radius: 6px; transition: background 0.15s, color 0.15s; white-space: nowrap; }
+    .nav-links a:hover { background: var(--section-bg); color: var(--text); }
+    .nav-links a.active { color: var(--accent-red); font-weight: 600; }
+    .nav-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 8px; border-radius: 8px; }
+    .nav-toggle:focus-visible { outline: 3px solid var(--accent-blue); outline-offset: 2px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile { display: none; position: fixed; top: 60px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 16px 24px 24px; z-index: 99; }
+    .nav-mobile.open { display: block; }
+    .nav-mobile ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+    .nav-mobile a { font-size: 1rem; font-weight: 500; color: var(--text-sec); text-decoration: none; padding: 10px 12px; border-radius: 8px; min-height: 44px; display: flex; align-items: center; }
+    .nav-mobile a:hover, .nav-mobile a:focus-visible { background: var(--section-bg); color: var(--text); }
+    .nav-mobile a.active { color: var(--accent-red); font-weight: 600; }
+    @media (min-width: 820px) { .nav-toggle { display: none; } .nav-links { display: flex; } }
+    @media (max-width: 819px) { .nav-links { display: none; } .nav-toggle { display: flex; } }
+
+    main { padding-top: 60px; }
+
+    .hero { background: var(--text); color: var(--white); padding: 64px 24px 72px; text-align: center; }
+    .hero-inner { max-width: var(--max-text); margin: 0 auto; }
+    .hero-eyebrow { font-size: 0.875rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #A8B4C0; margin-bottom: 20px; }
+    .hero h1 { font-family: var(--font-head); font-size: clamp(2rem, 5.5vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 20px; }
+    .hero h1 em { font-style: normal; color: #F4845F; }
+    .hero-desc { font-size: 1.05rem; color: #BDC8D4; max-width: 520px; margin: 0 auto; line-height: 1.7; }
+
+    .page-section { padding: 56px 24px; }
+    .section-inner { max-width: var(--max-text); margin: 0 auto; }
+    .alt-bg { background: var(--section-bg); }
+
+    .section-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-red); margin-bottom: 12px; }
+    h2 { font-family: var(--font-head); font-size: clamp(1.4rem, 3.5vw, 1.9rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 16px; }
+    h3 { font-family: var(--font-head); font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
+    p { color: var(--text-sec); margin-bottom: 14px; }
+    p:last-child { margin-bottom: 0; }
+    p strong { color: var(--text); font-weight: 600; }
+
+    /* RESOURCE CARDS */
+    .resource-list { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
+    .resource-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; display: flex; gap: 16px; align-items: flex-start; }
+    .resource-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+    .resource-body h3 { margin-bottom: 4px; }
+    .resource-body p { font-size: 0.875rem; color: var(--text-sec); margin-bottom: 8px; line-height: 1.6; }
+    .resource-body a { font-size: 0.875rem; font-weight: 600; }
+
+    /* LETTER TEMPLATES */
+    .letter-box { background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; padding: 28px; margin-bottom: 20px; }
+    .letter-box:last-child { margin-bottom: 0; }
+    .letter-box h3 { font-size: 1.1rem; margin-bottom: 12px; }
+    .letter-box .letter-desc { font-size: 0.9rem; color: var(--text-sec); margin-bottom: 20px; line-height: 1.65; }
+    .letter-text { background: var(--section-bg); border: 1px solid var(--border); border-radius: 10px; padding: 22px; font-size: 0.88rem; color: var(--text); line-height: 1.8; font-family: var(--font-body); }
+    .letter-text .fill-in { background: #FFF0EC; color: var(--accent-red); border-radius: 4px; padding: 1px 4px; font-style: italic; font-weight: 500; white-space: nowrap; }
+    .letter-text p { color: var(--text); margin-bottom: 12px; }
+    .letter-text p:last-child { margin-bottom: 0; }
+
+    /* CALLOUT */
+    .callout { border-radius: 12px; padding: 18px 22px; margin: 24px 0; display: flex; gap: 12px; align-items: flex-start; }
+    .callout.blue { background: #EEF4FF; border: 1px solid #C7D9FF; }
+    .callout.orange { background: #FFF7F5; border: 1px solid #FFD6CC; }
+    .callout-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+    .callout-body { font-size: 0.875rem; line-height: 1.65; }
+    .callout.blue .callout-body { color: #1E3A5F; }
+    .callout.orange .callout-body { color: #6B2510; }
+    .callout-body strong { font-weight: 600; }
+
+    footer { background: var(--section-bg); border-top: 1px solid var(--border); padding: 40px 24px; }
+    .footer-inner { max-width: var(--max-layout); margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 32px; }
+    @media (min-width: 640px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr; gap: 40px; } }
+    .footer-brand .nav-logo { display: inline-block; margin-bottom: 10px; font-size: 1.1rem; }
+    .footer-brand p { font-size: 0.875rem; color: var(--text-sec); max-width: 300px; line-height: 1.6; }
+    .footer-col h3 { font-family: var(--font-head); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col a { font-size: 0.9rem; color: var(--text-sec); text-decoration: none; transition: color 0.15s; }
+    .footer-col a:hover { color: var(--accent-red); }
+    .footer-disclaimer { border-top: 1px solid var(--border); padding-top: 24px; margin-top: 8px; max-width: var(--max-layout); margin-left: auto; margin-right: auto; }
+    .footer-disclaimer p { font-size: 0.8rem; color: var(--text-sec); line-height: 1.6; }
+    .footer-disclaimer p + p { margin-top: 8px; }
+
+    @media (max-width: 480px) { .hero { padding: 48px 20px 56px; } .resource-card { flex-direction: column; gap: 10px; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="AccessEd home">Access<span>Ed</span></a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="504-vs-iep.html">504 vs IEP</a></li>
+        <li><a href="rights.html">Your Rights</a></li>
+        <li><a href="process.html">The Process</a></li>
+        <li><a href="accommodations.html">Accommodations</a></li>
+        <li><a href="advocate.html">Self-Advocacy</a></li>
+        <li><a href="college.html">College</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="resources.html" class="active" aria-current="page">Resources</a></li>
+      </ul>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-mobile" id="mobile-nav" role="dialog" aria-label="Navigation menu">
+    <ul role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="504-vs-iep.html">504 vs IEP</a></li>
+      <li><a href="rights.html">Your Rights</a></li>
+      <li><a href="process.html">The Process</a></li>
+      <li><a href="accommodations.html">Accommodations</a></li>
+      <li><a href="advocate.html">Self-Advocacy</a></li>
+      <li><a href="college.html">Transitioning to College</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="resources.html" class="active" aria-current="page">Resources</a></li>
+    </ul>
+  </div>
+
+  <main id="main-content">
+
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-inner">
+        <p class="hero-eyebrow">Find what you need</p>
+        <h1 id="hero-heading">Everything<br /><em>in one place.</em></h1>
+        <p class="hero-desc">Official government sources, organizations that can help, and sample letters you can use right now. No searching required.</p>
+      </div>
+    </section>
+
+    <!-- OFFICIAL GOVERNMENT SOURCES -->
+    <section class="page-section" aria-labelledby="gov-heading">
+      <div class="section-inner">
+        <p class="section-label">Official sources</p>
+        <h2 id="gov-heading">U.S. government resources</h2>
+        <p>These are the authoritative sources for disability law in education. When you need to verify a legal claim or find official guidance, start here.</p>
+
+        <div class="callout blue" role="note">
+          <p class="callout-body"><strong>This is not legal advice.</strong> These resources are provided for informational purposes. For advice specific to your situation, contact a disability rights organization or attorney.</p>
+        </div>
+
+        <div class="resource-list" role="list">
+
+          <div class="resource-card" role="listitem">
+            <div class="resource-body">
+              <h3>U.S. Department of Education — Office for Civil Rights (OCR)</h3>
+              <p>The OCR enforces Section 504 and the ADA in schools. You can file a complaint here if your school is discriminating against you or failing to provide required accommodations. Complaints are free and you don't need a lawyer.</p>
+              <a href="https://www2.ed.gov/about/offices/list/ocr/complaintintro.html" target="_blank" rel="noopener noreferrer">File an OCR complaint →</a>
+            </div>
+          </div>
+
+          <div class="resource-card" role="listitem">
+            <div class="resource-body">
+              <h3>OSERS — Office of Special Education and Rehabilitative Services</h3>
+              <p>The federal office that administers IDEA. Their website has policy guidance documents, Q&amp;A publications, and resources explaining how IDEA works in practice.</p>
+              <a href="https://sites.ed.gov/idea/" target="_blank" rel="noopener noreferrer">IDEA website (sites.ed.gov/idea) →</a>
+            </div>
+          </div>
+
+          <div class="resource-card" role="listitem">
+            <div class="resource-body">
+              <h3>U.S. Department of Education — ed.gov</h3>
+              <p>The main Department of Education website. Contains publications on student rights, disability rights in education, and official policy documents.</p>
+              <a href="https://www.ed.gov/policy/speced/guid/edpicks.jhtml" target="_blank" rel="noopener noreferrer">Special Education guidance (ed.gov) →</a>
+            </div>
+          </div>
+
+          <div class="resource-card" role="listitem">
+            <div class="resource-body">
+              <h3>ADA National Network</h3>
+              <p>A federally funded network of regional centers that provide information, guidance, and training on the Americans with Disabilities Act. Free phone and email support available.</p>
+              <a href="https://adata.org" target="_blank" rel="noopener noreferrer">adata.org →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- STUDENT & FAMILY ORGANIZATIONS -->
+    <section class="page-section alt-bg" aria-labelledby="orgs-heading">
+      <div class="section-inner">
+        <p class="section-label">Organizations that can help</p>
+        <h2 id="orgs-heading">Student and family organizations</h2>
+        <p>These organizations offer advocacy support, legal help, and plain-language resources for students and families navigating the disability rights system.</p>
+
+        <div class="resource-list" role="list">
+
+          <div class="resource-card" role="listitem">
+            <div class="resource-body">
+              <h3>PACER Center</h3>
+              <p>Parent Advocacy Coalition for Educational Rights. Provides resources, workshops, and legal training for parents and students with disabilities. Their Student Training on Awareness of Rights (STAR) program is specifically designed for students.</p>
+              <a href="https://www.pacer.org" target="_blank" rel="noopener noreferrer">pacer.org →</a>
+            </div>
+          </div>
+
+          <div class="resource-card" role="listitem">
+            <div class="resource-body">
+              <h3>Understood.org</h3>
+              <p>One of the best plain-language resources for students with learning and attention issues — ADHD, dyslexia, dyscalculia, and more. Includes guides to 504 Plans, IEPs, school rights, and self-advocacy. Written for both parents and students.</p>
+              <a href="https://www.understood.org" target="_blank" rel="noopener noreferrer">understood.org →</a>
+            </div>
+          </div>
+
+          <div class="resource-card" role="listitem">
+            <div class="resource-body">
+              <h3>COPAA — Council of Parent Attorneys and Advocates</h3>
+              <p>Protects and enforces the legal and civil rights of students with disabilities. Their attorney directory can help you find a special education attorney in your area if you need legal representation.</p>
+              <a href="https://www.copaa.org" target="_blank" rel="noopener noreferrer">copaa.org →</a>
+            </div>
+          </div>
+
+          <div class="resource-card" role="listitem">
+            <div class="resource-body">
+              <h3>National Center for Learning Disabilities (NCLD)</h3>
+              <p>Advocates for the 1 in 5 students with learning and attention issues. Their State of LD report tracks how schools are serving students with disabilities nationally. Also provides policy resources and action guides.</p>
+              <a href="https://www.ncld.org" target="_blank" rel="noopener noreferrer">ncld.org →</a>
+            </div>
+          </div>
+
+          <div class="resource-card" role="listitem">
+            <div class="resource-body">
+              <h3>Parent Training and Information (PTI) Centers</h3>
+              <p>Every state has a federally funded PTI Center that provides free training and information to parents and students about their rights under IDEA and Section 504. They can help you understand your rights, prepare for IEP meetings, and resolve disputes with your school.</p>
+              <a href="https://www.parentcenterhub.org/find-your-center/" target="_blank" rel="noopener noreferrer">Find your state's PTI Center →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SAMPLE LETTERS -->
+    <section class="page-section" aria-labelledby="letters-heading">
+      <div class="section-inner">
+        <p class="section-label">Use these right now</p>
+        <h2 id="letters-heading">Sample request letters</h2>
+        <p>Copy these, fill in the highlighted sections, and send them via email or certified mail. Keep a copy. These are starting points — adjust the language to fit your situation.</p>
+
+        <div class="callout orange" role="note">
+          <p class="callout-body"><strong>Important:</strong> Send all formal requests in writing. Email counts — just keep a copy and note the date. Verbal requests do not start any legal timelines.</p>
+        </div>
+
+        <div class="letter-box">
+          <h3>Letter 1: Request for initial evaluation</h3>
+          <p class="letter-desc">Use this to formally request that your school evaluate your child (or yourself, if you're 18+) for a disability. This is the letter that starts the official process and the legal clock.</p>
+          <div class="letter-text" aria-label="Sample letter requesting an evaluation">
+            <p><span class="fill-in">[Today's date]</span></p>
+            <p>Dear <span class="fill-in">[Principal's name or Special Education Coordinator's name]</span>,</p>
+            <p>I am writing to formally request that <span class="fill-in">[School name]</span> conduct a full and individual evaluation of my <span class="fill-in">[son/daughter/child]</span>, <span class="fill-in">[Student's full name]</span>, currently enrolled in grade <span class="fill-in">[grade]</span>, to determine whether they have a disability that qualifies them for special education services or related services under the Individuals with Disabilities Education Act (IDEA) and/or Section 504 of the Rehabilitation Act of 1973.</p>
+            <p>I am requesting this evaluation because <span class="fill-in">[briefly describe what you're observing — e.g., "my child is struggling significantly with reading and attention in class, and these difficulties appear to be affecting their academic performance and ability to access the curriculum"]</span>.</p>
+            <p>Please send me written acknowledgment of this request, along with information about the next steps, the timeline, and my rights as a parent in this process.</p>
+            <p>Thank you for your attention to this matter.</p>
+            <p>Sincerely,<br /><span class="fill-in">[Your name]</span><br /><span class="fill-in">[Your phone number and email]</span><br /><span class="fill-in">[Student's name and grade]</span></p>
+          </div>
+        </div>
+
+        <div class="letter-box">
+          <h3>Letter 2: Complaint that plan isn't being followed</h3>
+          <p class="letter-desc">Use this when your IEP or 504 Plan is in place but not being followed. Send it to the case manager or principal first. Escalate if there's no response within a week.</p>
+          <div class="letter-text" aria-label="Sample letter complaining that accommodation plan isn't being followed">
+            <p><span class="fill-in">[Today's date]</span></p>
+            <p>Dear <span class="fill-in">[Case manager's name / Principal's name]</span>,</p>
+            <p>I am writing to bring to your attention a concern regarding the implementation of <span class="fill-in">[my son's/my daughter's/my]</span> <span class="fill-in">[IEP / 504 Plan]</span> at <span class="fill-in">[School name]</span>.</p>
+            <p>Specifically, the following accommodation(s) listed in the plan have not been consistently provided:</p>
+            <p><span class="fill-in">[Describe the specific accommodation(s) not being followed — e.g., "Extended time on tests (1.5x) has not been provided in Ms. Smith's class on the following dates: October 3, October 15, and October 22, 2024."]</span></p>
+            <p>This accommodation is documented in the plan dated <span class="fill-in">[date of plan]</span>. As you know, the school is legally required to implement the plan as written.</p>
+            <p>I am requesting that you take immediate steps to ensure this accommodation is provided as documented, and that you confirm in writing how this will be addressed going forward. Please respond within <span class="fill-in">[5 / 7]</span> school days.</p>
+            <p>If this issue is not resolved, I will need to contact the district's Director of Special Education and, if necessary, file a complaint with the Office for Civil Rights.</p>
+            <p>Thank you for your prompt attention.</p>
+            <p>Sincerely,<br /><span class="fill-in">[Your name]</span><br /><span class="fill-in">[Your phone number and email]</span><br /><span class="fill-in">[Student's name and grade]</span></p>
+          </div>
+        </div>
+
+        <div class="letter-box">
+          <h3>Letter 3: Request for Summary of Performance</h3>
+          <p class="letter-desc">For IEP students approaching graduation. Send this to your case manager or special education coordinator before your final semester.</p>
+          <div class="letter-text" aria-label="Sample letter requesting Summary of Performance">
+            <p><span class="fill-in">[Today's date]</span></p>
+            <p>Dear <span class="fill-in">[Case manager's name]</span>,</p>
+            <p>I am writing to request a Summary of Performance (SOP) for <span class="fill-in">[Student's full name]</span>, who is expected to graduate from <span class="fill-in">[School name]</span> in <span class="fill-in">[month/year]</span>.</p>
+            <p>As required under IDEA (20 U.S.C. § 1414(c)(5)(B)(ii)), the school must provide a Summary of Performance when a student's eligibility for special education terminates due to graduation with a regular diploma. I understand this document should summarize academic achievement, functional performance, and recommendations for supporting postsecondary needs.</p>
+            <p>I would appreciate it if the SOP could be as specific as possible, including information about functional limitations and the accommodations that have been effective, as this documentation will be helpful when registering with college disability services.</p>
+            <p>Please let me know when I can expect to receive this document.</p>
+            <p>Thank you.</p>
+            <p>Sincerely,<br /><span class="fill-in">[Your name]</span><br /><span class="fill-in">[Your phone number and email]</span><br /><span class="fill-in">[Student's name and expected graduation date]</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATE RESOURCES NOTE -->
+    <section class="page-section alt-bg" aria-labelledby="state-heading">
+      <div class="section-inner">
+        <p class="section-label">Don't forget state resources</p>
+        <h2 id="state-heading">Your state has resources too</h2>
+        <p>Federal law sets the floor — many states have stronger protections or additional requirements. Your state also has free, locally accessible resources.</p>
+
+        <div class="resource-list" role="list">
+          <div class="resource-card" role="listitem">
+            <div class="resource-body">
+              <h3>Find your state's Parent Training and Information (PTI) Center</h3>
+              <p>Every state has a federally funded PTI Center that offers free help to families and students — training workshops, one-on-one support, help preparing for IEP meetings, and assistance filing complaints. This is often the fastest path to local, personalized help.</p>
+              <a href="https://www.parentcenterhub.org/find-your-center/" target="_blank" rel="noopener noreferrer">Find your state's PTI Center →</a>
+            </div>
+          </div>
+          <div class="resource-card" role="listitem">
+            <div class="resource-body">
+              <h3>Your state's department of education</h3>
+              <p>Each state's department of education has a special education division that handles complaints about IDEA violations and can provide state-specific guidance. Search "[your state] department of education special education" to find your state's office.</p>
+            </div>
+          </div>
+          <div class="resource-card" role="listitem">
+            <div class="resource-body">
+              <h3>Protection and Advocacy (P&amp;A) organizations</h3>
+              <p>Every state has a federally mandated Protection and Advocacy organization that provides legal advocacy services to people with disabilities — including students in K-12. Services are often free or low-cost.</p>
+              <a href="https://www.ndrn.org/about/ndrn-member-agencies/" target="_blank" rel="noopener noreferrer">Find your state's P&amp;A agency →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" aria-label="AccessEd home">Access<span>Ed</span></a>
+        <p>A student-written resource about disability rights and K-12 accommodations. Written by a junior with ADHD, anxiety, and fine motor delay — for every student who deserves better.</p>
+      </div>
+      <nav class="footer-col" aria-label="Know your rights">
+        <h3>Know Your Rights</h3>
+        <ul role="list">
+          <li><a href="rights.html">Your Legal Rights</a></li>
+          <li><a href="504-vs-iep.html">504 vs IEP</a></li>
+          <li><a href="process.html">The Process</a></li>
+          <li><a href="accommodations.html">Accommodations</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-col" aria-label="Take action">
+        <h3>Take Action</h3>
+        <ul role="list">
+          <li><a href="advocate.html">Self-Advocacy</a></li>
+          <li><a href="college.html">Going to College</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="resources.html">Resources</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-disclaimer">
+      <p><strong>Disclaimer:</strong> This website is for informational purposes only and does not constitute legal advice. All legal information is based on federal U.S. law. Individual state laws and district policies may vary. If you have a legal dispute with your school, consult a qualified education attorney or disability rights organization.</p>
+      <p>AccessEd is an independent student project. It is not affiliated with any school, government agency, or legal organization. External links are provided for convenience — AccessEd does not endorse and is not affiliated with any third-party organization or website. Laws and policies can change — verify important details with official sources.</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    toggle.addEventListener('click', function () {
+      const isOpen = mobileNav.classList.contains('open');
+      mobileNav.classList.toggle('open', !isOpen);
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      toggle.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+    });
+    mobileNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileNav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+      });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+        mobileNav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+  </script>
+
+</body>
+</html>

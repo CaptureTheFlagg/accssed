@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Common Accommodations — AccessEd</title>
+  <meta name="description" content="Extended time, quiet testing, speech-to-text, movement breaks — see what accommodations exist, who they help, and how to ask for them." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:          #FFFDF7;
+      --text:        #1C1C1C;
+      --text-sec:    #4A4A4A;
+      --accent-red:  #D94F2B;
+      --accent-blue: #1A56DB;
+      --white:       #FFFFFF;
+      --card-bg:     #FFFFFF;
+      --section-bg:  #F5F0E8;
+      --border:      #E0D9CE;
+      --font-head:   'Plus Jakarta Sans', sans-serif;
+      --font-body:   'Inter', sans-serif;
+      --max-text:    720px;
+      --max-layout:  1100px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 17px; line-height: 1.75; }
+    a { color: var(--accent-blue); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--accent-red); }
+    a:focus-visible { outline: 3px solid var(--accent-blue); outline-offset: 3px; border-radius: 3px; }
+
+    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--border); height: 60px; }
+    .nav-inner { max-width: var(--max-layout); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--font-head); font-weight: 800; font-size: 1.2rem; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--accent-red); }
+    .nav-logo:hover { color: var(--text); }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--text-sec); text-decoration: none; padding: 6px 10px; border-radius: 6px; transition: background 0.15s, color 0.15s; white-space: nowrap; }
+    .nav-links a:hover { background: var(--section-bg); color: var(--text); }
+    .nav-links a.active { color: var(--accent-red); font-weight: 600; }
+    .nav-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 8px; border-radius: 8px; }
+    .nav-toggle:focus-visible { outline: 3px solid var(--accent-blue); outline-offset: 2px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile { display: none; position: fixed; top: 60px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 16px 24px 24px; z-index: 99; }
+    .nav-mobile.open { display: block; }
+    .nav-mobile ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+    .nav-mobile a { font-size: 1rem; font-weight: 500; color: var(--text-sec); text-decoration: none; padding: 10px 12px; border-radius: 8px; min-height: 44px; display: flex; align-items: center; }
+    .nav-mobile a:hover, .nav-mobile a:focus-visible { background: var(--section-bg); color: var(--text); }
+    .nav-mobile a.active { color: var(--accent-red); font-weight: 600; }
+    @media (min-width: 820px) { .nav-toggle { display: none; } .nav-links { display: flex; } }
+    @media (max-width: 819px) { .nav-links { display: none; } .nav-toggle { display: flex; } }
+
+    main { padding-top: 60px; }
+
+    .hero { background: var(--text); color: var(--white); padding: 64px 24px 72px; text-align: center; }
+    .hero-inner { max-width: var(--max-text); margin: 0 auto; }
+    .hero-eyebrow { font-size: 0.875rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #A8B4C0; margin-bottom: 20px; }
+    .hero h1 { font-family: var(--font-head); font-size: clamp(2rem, 5.5vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 20px; }
+    .hero h1 em { font-style: normal; color: #F4845F; }
+    .hero-desc { font-size: 1.05rem; color: #BDC8D4; max-width: 520px; margin: 0 auto; line-height: 1.7; }
+
+    .page-section { padding: 56px 24px; }
+    .section-inner { max-width: var(--max-text); margin: 0 auto; }
+    .wide-inner { max-width: var(--max-layout); margin: 0 auto; }
+    .alt-bg { background: var(--section-bg); }
+
+    .section-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-red); margin-bottom: 12px; }
+    h2 { font-family: var(--font-head); font-size: clamp(1.4rem, 3.5vw, 1.9rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 16px; }
+    h3 { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.01em; }
+    p { color: var(--text-sec); margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+    p strong { color: var(--text); font-weight: 600; }
+
+    /* DISTINCTION BOX */
+    .distinction { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0; }
+    @media (max-width: 540px) { .distinction { grid-template-columns: 1fr; } }
+    .distinction-card { border-radius: 12px; padding: 22px; }
+    .distinction-card.acc { background: #EEF4FF; border: 1px solid #C7D9FF; }
+    .distinction-card.mod { background: #FFF7F5; border: 1px solid #FFD6CC; }
+    .distinction-card h4 { font-family: var(--font-head); font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+    .distinction-card.acc h4 { color: var(--accent-blue); }
+    .distinction-card.mod h4 { color: var(--accent-red); }
+    .distinction-card p { font-size: 0.875rem; line-height: 1.6; margin-bottom: 0; }
+    .distinction-card.acc p { color: #1E3A5F; }
+    .distinction-card.mod p { color: #6B2510; }
+
+    /* CATEGORY SECTIONS */
+    .category-section { margin-bottom: 48px; }
+    .category-section:last-child { margin-bottom: 0; }
+    .category-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 2px solid var(--border); }
+    .category-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .category-header h3 { margin-bottom: 0; font-size: 1.15rem; }
+
+    .acc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+    .acc-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; }
+    .acc-card h4 { font-family: var(--font-head); font-size: 0.92rem; font-weight: 700; margin-bottom: 5px; }
+    .acc-card p { font-size: 0.83rem; color: var(--text-sec); line-height: 1.55; margin-bottom: 0; }
+
+    /* CALLOUT */
+    .callout { border-radius: 12px; padding: 20px 24px; margin: 28px 0; display: flex; gap: 14px; align-items: flex-start; }
+    .callout.blue { background: #EEF4FF; border: 1px solid #C7D9FF; }
+    .callout.orange { background: #FFF7F5; border: 1px solid #FFD6CC; }
+    .callout-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+    .callout-body { font-size: 0.9rem; line-height: 1.65; }
+    .callout.blue .callout-body { color: #1E3A5F; }
+    .callout.orange .callout-body { color: #6B2510; }
+    .callout-body strong { font-weight: 600; }
+
+    /* HOW TO ASK */
+    .ask-steps { list-style: none; padding: 0; margin-top: 24px; display: flex; flex-direction: column; gap: 18px; }
+    .ask-steps li { display: flex; gap: 16px; align-items: flex-start; }
+    .ask-step-num { min-width: 32px; height: 32px; background: var(--accent-red); color: var(--white); border-radius: 50%; font-family: var(--font-head); font-size: 0.85rem; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 4px; }
+    .ask-step-body { font-size: 0.93rem; color: var(--text-sec); line-height: 1.65; }
+    .ask-step-body strong { color: var(--text); font-weight: 600; display: block; margin-bottom: 2px; }
+
+    .cta-block { background: var(--text); color: var(--white); padding: 56px 24px; text-align: center; }
+    .cta-inner { max-width: 520px; margin: 0 auto; }
+    .cta-block h2 { font-family: var(--font-head); font-size: clamp(1.4rem, 3.5vw, 1.9rem); font-weight: 800; letter-spacing: -0.02em; color: var(--white); margin-bottom: 12px; }
+    .cta-block p { color: #BDC8D4; margin-bottom: 28px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-red); color: var(--white); font-family: var(--font-head); font-size: 0.95rem; font-weight: 700; text-decoration: none; padding: 13px 24px; border-radius: 10px; min-height: 44px; transition: background 0.15s; }
+    .btn-primary:hover { background: #C0411F; color: var(--white); }
+
+    footer { background: var(--section-bg); border-top: 1px solid var(--border); padding: 40px 24px; }
+    .footer-inner { max-width: var(--max-layout); margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 32px; }
+    @media (min-width: 640px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr; gap: 40px; } }
+    .footer-brand .nav-logo { display: inline-block; margin-bottom: 10px; font-size: 1.1rem; }
+    .footer-brand p { font-size: 0.875rem; color: var(--text-sec); max-width: 300px; line-height: 1.6; }
+    .footer-col h3 { font-family: var(--font-head); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col a { font-size: 0.9rem; color: var(--text-sec); text-decoration: none; transition: color 0.15s; }
+    .footer-col a:hover { color: var(--accent-red); }
+    .footer-disclaimer { border-top: 1px solid var(--border); padding-top: 24px; margin-top: 8px; max-width: var(--max-layout); margin-left: auto; margin-right: auto; }
+    .footer-disclaimer p { font-size: 0.8rem; color: var(--text-sec); line-height: 1.6; }
+    .footer-disclaimer p + p { margin-top: 8px; }
+
+    @media (max-width: 480px) { .hero { padding: 48px 20px 56px; } .acc-grid { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="AccessEd home">Access<span>Ed</span></a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="504-vs-iep.html">504 vs IEP</a></li>
+        <li><a href="rights.html">Your Rights</a></li>
+        <li><a href="process.html">The Process</a></li>
+        <li><a href="accommodations.html" class="active" aria-current="page">Accommodations</a></li>
+        <li><a href="advocate.html">Self-Advocacy</a></li>
+        <li><a href="college.html">College</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="resources.html">Resources</a></li>
+      </ul>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-mobile" id="mobile-nav" role="dialog" aria-label="Navigation menu">
+    <ul role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="504-vs-iep.html">504 vs IEP</a></li>
+      <li><a href="rights.html">Your Rights</a></li>
+      <li><a href="process.html">The Process</a></li>
+      <li><a href="accommodations.html" class="active" aria-current="page">Accommodations</a></li>
+      <li><a href="advocate.html">Self-Advocacy</a></li>
+      <li><a href="college.html">Transitioning to College</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="resources.html">Resources</a></li>
+    </ul>
+  </div>
+
+  <main id="main-content">
+
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-inner">
+        <p class="hero-eyebrow">What you can ask for</p>
+        <h1 id="hero-heading">You can ask for these.<br /><em>Your school must consider them.</em></h1>
+        <p class="hero-desc">Accommodations are changes to how you access your education — not changes to what you're expected to learn. Here's what exists, who it helps, and how to bring it up.</p>
+      </div>
+    </section>
+
+    <!-- ACCOMMODATIONS VS MODIFICATIONS -->
+    <section class="page-section" aria-labelledby="distinction-heading">
+      <div class="section-inner">
+        <p class="section-label">Know the difference</p>
+        <h2 id="distinction-heading">Accommodations vs. modifications</h2>
+        <p>These two words get used interchangeably — but they mean different things, and understanding the difference matters.</p>
+
+        <div class="distinction">
+          <div class="distinction-card acc">
+            <h4>Accommodation</h4>
+            <p>Changes <em>how</em> you access the material — without changing what you're expected to learn or the standards you're held to. Extended time on a test is an accommodation. You're still expected to know the same content.</p>
+          </div>
+          <div class="distinction-card mod">
+            <h4>Modification</h4>
+            <p>Changes <em>what</em> you're expected to learn or the standard you're held to. Fewer test questions covering less content is a modification. Modifications can affect grades and transcript — ask your school specifically before agreeing to any.</p>
+          </div>
+        </div>
+
+        <p>Most students with 504 Plans get accommodations only. Students with IEPs may have both, depending on their needs. <strong>If your school suggests a modification, ask how it will appear on your transcript and whether it affects your diploma track before agreeing.</strong></p>
+
+        <div class="callout blue" role="note">
+          <p class="callout-body"><strong>This is not legal advice.</strong> Specific accommodations must be determined through the IEP or 504 process, based on your individual evaluation. Not every accommodation is appropriate for every student.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE ACCOMMODATIONS LIST -->
+    <section class="page-section alt-bg" aria-labelledby="list-heading">
+      <div class="wide-inner">
+        <div style="max-width: var(--max-text); margin-bottom: 32px;">
+          <p class="section-label">What's out there</p>
+          <h2 id="list-heading">Common accommodations by category</h2>
+          <p>This isn't an exhaustive list — there are many more. Think about where you struggle and look for accommodations that address the barrier, not just the symptom.</p>
+        </div>
+
+        <!-- TESTING -->
+        <div class="category-section">
+          <div class="category-header">
+            <h3>Testing accommodations</h3>
+          </div>
+          <div class="acc-grid" role="list">
+            <div class="acc-card" role="listitem">
+              <h4>Extended time</h4>
+              <p>Extra time to complete tests — typically 1.5x or 2x the standard time. Common for ADHD, anxiety, processing speed differences, and fine motor delays.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Separate testing room</h4>
+              <p>Taking tests in a quieter, less distracting environment. Helpful for attention and anxiety disorders.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Reader (human or text-to-speech)</h4>
+              <p>Test questions read aloud to you. Used for dyslexia, visual impairments, and some processing disorders.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Scribe or speech-to-text for written answers</h4>
+              <p>A person or software records your spoken answers. Common for fine motor delays, dysgraphia, and physical disabilities.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Calculator on non-math tests</h4>
+              <p>Use of a calculator on tests that aren't measuring calculation ability. Often part of a learning disability accommodation.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Breaks during testing</h4>
+              <p>Scheduled breaks without the clock stopping. Helpful for attention, anxiety, and chronic illness.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Test read multiple times</h4>
+              <p>Questions can be re-read as often as needed. Used for auditory processing or attention differences.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Large print or modified format</h4>
+              <p>Tests printed in larger font or on different paper. Common for visual impairments and some processing differences.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- INSTRUCTION -->
+        <div class="category-section">
+          <div class="category-header">
+            <h3>Instruction accommodations</h3>
+          </div>
+          <div class="acc-grid" role="list">
+            <div class="acc-card" role="listitem">
+              <h4>Preferential seating</h4>
+              <p>Sitting closer to the front, away from distractions, or near the door. Useful for attention and sensory differences.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Copies of teacher notes or slides</h4>
+              <p>Receiving the teacher's notes before or after class. Helpful when handwriting speed, attention, or fine motor skills make note-taking difficult.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Extended time on assignments</h4>
+              <p>Extra days to complete homework or projects. Common for executive function challenges, anxiety, and processing differences.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Reduced homework load</h4>
+              <p>Fewer questions covering the same concepts. Appropriate when a student has demonstrated understanding but production is a barrier.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Oral instead of written responses</h4>
+              <p>Answering questions aloud rather than in writing. Used for dysgraphia, fine motor delays, or students with severe writing anxiety.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Chunked assignments</h4>
+              <p>Long tasks broken into smaller steps with separate due dates. Helpful for executive function and attention challenges.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TECHNOLOGY -->
+        <div class="category-section">
+          <div class="category-header">
+            <h3>Technology accommodations</h3>
+          </div>
+          <div class="acc-grid" role="list">
+            <div class="acc-card" role="listitem">
+              <h4>Speech-to-text software</h4>
+              <p>Dictate your writing instead of typing. Used for fine motor delays, dysgraphia, and physical disabilities.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Text-to-speech software</h4>
+              <p>Have written text read aloud. Used for dyslexia, visual impairments, and auditory learners with reading challenges.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Word processor for written work</h4>
+              <p>Typing instead of handwriting for assignments and tests. Common for fine motor delays and dysgraphia.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Spell-check or grammar tools</h4>
+              <p>Use of assistive spelling software. Often allowed for dyslexia when the test isn't measuring spelling ability.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Audiobooks or read-aloud versions</h4>
+              <p>Textbooks and reading materials in audio form. Used for dyslexia, visual impairments, and reading processing differences.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENVIRONMENT -->
+        <div class="category-section">
+          <div class="category-header">
+            <h3>Environment and sensory accommodations</h3>
+          </div>
+          <div class="acc-grid" role="list">
+            <div class="acc-card" role="listitem">
+              <h4>Movement breaks</h4>
+              <p>Scheduled breaks to move around during class. Common for ADHD and sensory processing differences.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Fidget tools</h4>
+              <p>Use of approved sensory tools during class. Helps students with ADHD, autism, and sensory processing needs maintain focus.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Standing desk or alternative seating</h4>
+              <p>Flexibility in how and where you sit. Used for ADHD, sensory differences, and some physical conditions.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Noise-reducing headphones</h4>
+              <p>Wearing noise-canceling or hearing protection during class or tests. Common for sensory processing disorders and anxiety.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Reduced sensory load</h4>
+              <p>Adjustments to lighting, seating arrangements, or classroom setup. Used for sensory processing differences and autism spectrum conditions.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PHYSICAL / MOTOR -->
+        <div class="category-section">
+          <div class="category-header">
+            <h3>Physical and motor accommodations</h3>
+          </div>
+          <div class="acc-grid" role="list">
+            <div class="acc-card" role="listitem">
+              <h4>Extra time between classes</h4>
+              <p>Additional passing time to move between classrooms. Used for physical disabilities, mobility impairments, and chronic illness.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Modified PE or adapted physical education</h4>
+              <p>Adjusted physical education requirements or activities. Common for physical disabilities and some chronic health conditions.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Elevator access or accessible routes</h4>
+              <p>Access to elevators and accessible pathways in school buildings.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Assistive devices in class</h4>
+              <p>Use of mobility aids, grip aids, slant boards, or other physical assistive devices during instruction.</p>
+            </div>
+            <div class="acc-card" role="listitem">
+              <h4>Reduced fine motor tasks</h4>
+              <p>Alternatives to tasks requiring precise hand movements, like cutting, drawing, or handwriting. Used for fine motor delays.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- HOW TO ASK -->
+    <section class="page-section" aria-labelledby="ask-heading">
+      <div class="section-inner">
+        <p class="section-label">How to get what you need</p>
+        <h2 id="ask-heading">How to ask for accommodations that fit you</h2>
+        <p>When you're requesting accommodations, describe your functional barrier — not just your label. "I have ADHD" is less useful than "I run out of time on tests because I re-read questions multiple times before I can process them." Here's how to make a strong case.</p>
+
+        <ul class="ask-steps" role="list">
+          <li>
+            <div class="ask-step-num" aria-hidden="true">1</div>
+            <div class="ask-step-body">
+              <strong>Name the barrier, not the diagnosis</strong>
+              Describe specifically what's hard. "I have trouble organizing my thoughts while handwriting fast" is more useful than "I have anxiety." The accommodation needs to address the barrier.
+            </div>
+          </li>
+          <li>
+            <div class="ask-step-num" aria-hidden="true">2</div>
+            <div class="ask-step-body">
+              <strong>Connect the barrier to the accommodation</strong>
+              "Because I have a fine motor delay that slows my handwriting, I need to use a word processor on exams" is a clear, logical connection. Make it obvious why the accommodation addresses your specific need.
+            </div>
+          </li>
+          <li>
+            <div class="ask-step-num" aria-hidden="true">3</div>
+            <div class="ask-step-body">
+              <strong>Bring it to your IEP or 504 meeting</strong>
+              Your accommodations are decided in your plan meetings — not in individual conversations with teachers. Bring a list of what you want and ask for it to be added to your plan document.
+            </div>
+          </li>
+          <li>
+            <div class="ask-step-num" aria-hidden="true">4</div>
+            <div class="ask-step-body">
+              <strong>Get it in writing</strong>
+              An accommodation only exists if it's in your plan. A teacher saying "sure, I'll give you extra time" is not a formal accommodation. Make sure it's documented.
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-block" aria-labelledby="cta-heading">
+      <div class="cta-inner">
+        <h2 id="cta-heading">Now let's talk about using them.</h2>
+        <p>Knowing your accommodations is one thing. Getting your teachers to actually follow them is another. Learn how to advocate for yourself — in class, in meetings, and when the school doesn't follow through.</p>
+        <a href="advocate.html" class="btn-primary">
+          Learn self-advocacy
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" aria-label="AccessEd home">Access<span>Ed</span></a>
+        <p>A student-written resource about disability rights and K-12 accommodations. Written by a junior with ADHD, anxiety, and fine motor delay — for every student who deserves better.</p>
+      </div>
+      <nav class="footer-col" aria-label="Know your rights">
+        <h3>Know Your Rights</h3>
+        <ul role="list">
+          <li><a href="rights.html">Your Legal Rights</a></li>
+          <li><a href="504-vs-iep.html">504 vs IEP</a></li>
+          <li><a href="process.html">The Process</a></li>
+          <li><a href="accommodations.html">Accommodations</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-col" aria-label="Take action">
+        <h3>Take Action</h3>
+        <ul role="list">
+          <li><a href="advocate.html">Self-Advocacy</a></li>
+          <li><a href="college.html">Going to College</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="resources.html">Resources</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-disclaimer">
+      <p><strong>Disclaimer:</strong> This website is for informational purposes only and does not constitute legal advice. All legal information is based on federal U.S. law. Individual state laws and district policies may vary. If you have a legal dispute with your school, consult a qualified education attorney or disability rights organization.</p>
+      <p>AccessEd is an independent student project. It is not affiliated with any school, government agency, or legal organization. Laws and policies can change — verify important details with official sources.</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    toggle.addEventListener('click', function () {
+      const isOpen = mobileNav.classList.contains('open');
+      mobileNav.classList.toggle('open', !isOpen);
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      toggle.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+    });
+    mobileNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileNav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+      });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+        mobileNav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+  </script>
+
+</body>
+</html>

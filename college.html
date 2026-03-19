@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transitioning to College — AccessEd</title>
+  <meta name="description" content="Your IEP doesn't follow you to college. Learn what changes, how to prepare before you graduate, and how to register with disability services." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:          #FFFDF7;
+      --text:        #1C1C1C;
+      --text-sec:    #4A4A4A;
+      --accent-red:  #D94F2B;
+      --accent-blue: #1A56DB;
+      --white:       #FFFFFF;
+      --card-bg:     #FFFFFF;
+      --section-bg:  #F5F0E8;
+      --border:      #E0D9CE;
+      --font-head:   'Plus Jakarta Sans', sans-serif;
+      --font-body:   'Inter', sans-serif;
+      --max-text:    720px;
+      --max-layout:  1100px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 17px; line-height: 1.75; }
+    a { color: var(--accent-blue); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--accent-red); }
+    a:focus-visible { outline: 3px solid var(--accent-blue); outline-offset: 3px; border-radius: 3px; }
+
+    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--border); height: 60px; }
+    .nav-inner { max-width: var(--max-layout); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--font-head); font-weight: 800; font-size: 1.2rem; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--accent-red); }
+    .nav-logo:hover { color: var(--text); }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--text-sec); text-decoration: none; padding: 6px 10px; border-radius: 6px; transition: background 0.15s, color 0.15s; white-space: nowrap; }
+    .nav-links a:hover { background: var(--section-bg); color: var(--text); }
+    .nav-links a.active { color: var(--accent-red); font-weight: 600; }
+    .nav-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 8px; border-radius: 8px; }
+    .nav-toggle:focus-visible { outline: 3px solid var(--accent-blue); outline-offset: 2px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile { display: none; position: fixed; top: 60px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 16px 24px 24px; z-index: 99; }
+    .nav-mobile.open { display: block; }
+    .nav-mobile ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+    .nav-mobile a { font-size: 1rem; font-weight: 500; color: var(--text-sec); text-decoration: none; padding: 10px 12px; border-radius: 8px; min-height: 44px; display: flex; align-items: center; }
+    .nav-mobile a:hover, .nav-mobile a:focus-visible { background: var(--section-bg); color: var(--text); }
+    .nav-mobile a.active { color: var(--accent-red); font-weight: 600; }
+    @media (min-width: 820px) { .nav-toggle { display: none; } .nav-links { display: flex; } }
+    @media (max-width: 819px) { .nav-links { display: none; } .nav-toggle { display: flex; } }
+
+    main { padding-top: 60px; }
+
+    .hero { background: var(--text); color: var(--white); padding: 64px 24px 72px; text-align: center; }
+    .hero-inner { max-width: var(--max-text); margin: 0 auto; }
+    .hero-eyebrow { font-size: 0.875rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #A8B4C0; margin-bottom: 20px; }
+    .hero h1 { font-family: var(--font-head); font-size: clamp(2rem, 5.5vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 20px; }
+    .hero h1 em { font-style: normal; color: #F4845F; }
+    .hero-desc { font-size: 1.05rem; color: #BDC8D4; max-width: 520px; margin: 0 auto; line-height: 1.7; }
+
+    .page-section { padding: 56px 24px; }
+    .section-inner { max-width: var(--max-text); margin: 0 auto; }
+    .alt-bg { background: var(--section-bg); }
+
+    .section-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-red); margin-bottom: 12px; }
+    h2 { font-family: var(--font-head); font-size: clamp(1.4rem, 3.5vw, 1.9rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 16px; }
+    h3 { font-family: var(--font-head); font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.01em; }
+    p { color: var(--text-sec); margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+    p strong { color: var(--text); font-weight: 600; }
+
+    /* COMPARISON TABLE */
+    .table-wrap { overflow-x: auto; margin: 28px 0; border-radius: 12px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; min-width: 420px; }
+    thead { background: var(--section-bg); }
+    thead th { font-family: var(--font-head); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text); padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+    thead th:first-child { border-right: 1px solid var(--border); }
+    tbody tr { border-bottom: 1px solid var(--border); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody td { padding: 12px 16px; vertical-align: top; color: var(--text-sec); line-height: 1.55; }
+    tbody td:first-child { font-weight: 600; color: var(--text); border-right: 1px solid var(--border); }
+
+    /* CALLOUT */
+    .callout { border-radius: 12px; padding: 20px 24px; margin: 28px 0; display: flex; gap: 14px; align-items: flex-start; }
+    .callout.blue { background: #EEF4FF; border: 1px solid #C7D9FF; }
+    .callout.orange { background: #FFF7F5; border: 1px solid #FFD6CC; }
+    .callout.red { background: #FFF5F5; border: 1px solid #FFC9C9; }
+    .callout.green { background: #F0FDF4; border: 1px solid #A7F3D0; }
+    .callout-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+    .callout-body { font-size: 0.9rem; line-height: 1.65; }
+    .callout.blue .callout-body { color: #1E3A5F; }
+    .callout.orange .callout-body { color: #6B2510; }
+    .callout.red .callout-body { color: #7F1D1D; }
+    .callout.green .callout-body { color: #14532D; }
+    .callout-body strong { font-weight: 600; }
+    .callout-body p { margin-bottom: 8px; color: inherit; }
+    .callout-body p:last-child { margin-bottom: 0; }
+
+    /* CHECKLIST STEPS */
+    .action-steps { list-style: none; padding: 0; margin-top: 24px; display: flex; flex-direction: column; gap: 20px; }
+    .action-steps li { display: flex; gap: 18px; align-items: flex-start; }
+    .action-num { min-width: 36px; height: 36px; background: var(--accent-red); color: var(--white); border-radius: 50%; font-family: var(--font-head); font-size: 0.9rem; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 4px; }
+    .action-body { font-size: 0.93rem; color: var(--text-sec); line-height: 1.65; flex: 1; }
+    .action-body strong { color: var(--text); font-weight: 600; display: block; margin-bottom: 3px; }
+
+    /* SOP SPOTLIGHT */
+    .sop-card { background: var(--card-bg); border: 2px solid var(--accent-blue); border-radius: 16px; padding: 28px; margin: 28px 0; }
+    .sop-card .sop-badge { display: inline-block; background: #EEF4FF; color: var(--accent-blue); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; margin-bottom: 12px; }
+    .sop-card h3 { font-size: 1.15rem; margin-bottom: 10px; }
+    .sop-card p { font-size: 0.9rem; color: var(--text-sec); line-height: 1.65; margin-bottom: 10px; }
+    .sop-card p:last-child { margin-bottom: 0; }
+    .sop-card p strong { color: var(--text); }
+
+    .cta-block { background: var(--text); color: var(--white); padding: 56px 24px; text-align: center; }
+    .cta-inner { max-width: 520px; margin: 0 auto; }
+    .cta-block h2 { font-family: var(--font-head); font-size: clamp(1.4rem, 3.5vw, 1.9rem); font-weight: 800; letter-spacing: -0.02em; color: var(--white); margin-bottom: 12px; }
+    .cta-block p { color: #BDC8D4; margin-bottom: 28px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-red); color: var(--white); font-family: var(--font-head); font-size: 0.95rem; font-weight: 700; text-decoration: none; padding: 13px 24px; border-radius: 10px; min-height: 44px; transition: background 0.15s; }
+    .btn-primary:hover { background: #C0411F; color: var(--white); }
+
+    footer { background: var(--section-bg); border-top: 1px solid var(--border); padding: 40px 24px; }
+    .footer-inner { max-width: var(--max-layout); margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 32px; }
+    @media (min-width: 640px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr; gap: 40px; } }
+    .footer-brand .nav-logo { display: inline-block; margin-bottom: 10px; font-size: 1.1rem; }
+    .footer-brand p { font-size: 0.875rem; color: var(--text-sec); max-width: 300px; line-height: 1.6; }
+    .footer-col h3 { font-family: var(--font-head); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col a { font-size: 0.9rem; color: var(--text-sec); text-decoration: none; transition: color 0.15s; }
+    .footer-col a:hover { color: var(--accent-red); }
+    .footer-disclaimer { border-top: 1px solid var(--border); padding-top: 24px; margin-top: 8px; max-width: var(--max-layout); margin-left: auto; margin-right: auto; }
+    .footer-disclaimer p { font-size: 0.8rem; color: var(--text-sec); line-height: 1.6; }
+    .footer-disclaimer p + p { margin-top: 8px; }
+
+    @media (max-width: 480px) { .hero { padding: 48px 20px 56px; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="AccessEd home">Access<span>Ed</span></a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="504-vs-iep.html">504 vs IEP</a></li>
+        <li><a href="rights.html">Your Rights</a></li>
+        <li><a href="process.html">The Process</a></li>
+        <li><a href="accommodations.html">Accommodations</a></li>
+        <li><a href="advocate.html">Self-Advocacy</a></li>
+        <li><a href="college.html" class="active" aria-current="page">College</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="resources.html">Resources</a></li>
+      </ul>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-mobile" id="mobile-nav" role="dialog" aria-label="Navigation menu">
+    <ul role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="504-vs-iep.html">504 vs IEP</a></li>
+      <li><a href="rights.html">Your Rights</a></li>
+      <li><a href="process.html">The Process</a></li>
+      <li><a href="accommodations.html">Accommodations</a></li>
+      <li><a href="advocate.html">Self-Advocacy</a></li>
+      <li><a href="college.html" class="active" aria-current="page">Transitioning to College</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="resources.html">Resources</a></li>
+    </ul>
+  </div>
+
+  <main id="main-content">
+
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-inner">
+        <p class="hero-eyebrow">What changes when you graduate</p>
+        <h1 id="hero-heading">College is different.<br /><em>Start preparing now.</em></h1>
+        <p class="hero-desc">The protections you have in K-12 don't automatically follow you to college. The laws change, the process changes, and the burden shifts to you. Here's everything you need to know before you go.</p>
+      </div>
+    </section>
+
+    <!-- THE MYTH -->
+    <section class="page-section" aria-labelledby="myth-heading">
+      <div class="section-inner">
+        <p class="section-label">The biggest misconception</p>
+        <h2 id="myth-heading">"My IEP will follow me to college."</h2>
+        <p>It won't. And this surprises more students than almost anything else about the transition to college.</p>
+        <p>Your IEP is an IDEA document. <strong>IDEA ends at high school graduation.</strong> The moment you walk across that stage, your IEP is no longer legally enforceable. It doesn't transfer to any college or university. The accommodations listed in it are not automatically granted. And no one at your college will reach out to ask if you need support.</p>
+        <p>The same is true of 504 Plans, with one difference: Section 504 and the ADA do still apply in college. But the way they work is completely different — and the burden shifts from the school to you.</p>
+
+        <div class="callout red" role="note">
+          <div class="callout-body">
+            <p><strong>IEPs end permanently at high school graduation.</strong> There is no college IEP. IDEA is a K-12 law. Once you graduate, you are no longer protected by it — you're protected by Section 504 and the ADA only.</p>
+            <p><strong>College accommodations do not renew automatically each semester.</strong> At most colleges, you must re-request your accommodations every semester. If you miss the deadline, you may not receive them for that term.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- K-12 vs COLLEGE TABLE -->
+    <section class="page-section alt-bg" aria-labelledby="compare-heading">
+      <div class="section-inner">
+        <p class="section-label">How it changes</p>
+        <h2 id="compare-heading">K-12 vs. college: what's different</h2>
+        <p>The shift from high school to college is bigger than most people realize. Here's a side-by-side comparison.</p>
+
+        <div class="table-wrap" role="region" aria-label="K-12 vs college disability support comparison" tabindex="0">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Category</th>
+                <th scope="col">K-12</th>
+                <th scope="col">College</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Governing law</td>
+                <td>IDEA, Section 504, ADA</td>
+                <td>Section 504 and ADA only</td>
+              </tr>
+              <tr>
+                <td>Who identifies you</td>
+                <td>School is responsible for finding students who need support (Child Find)</td>
+                <td>You must identify yourself to disability services</td>
+              </tr>
+              <tr>
+                <td>Evaluation</td>
+                <td>School provides free evaluations</td>
+                <td>You must provide documentation (usually at your own cost)</td>
+              </tr>
+              <tr>
+                <td>Right to FAPE</td>
+                <td>Yes — your school must provide a free, appropriate education</td>
+                <td>No — college is not required to ensure your success, only equal access</td>
+              </tr>
+              <tr>
+                <td>Plan document</td>
+                <td>IEP or 504 Plan, maintained by the school</td>
+                <td>Accommodation letter issued by disability services office</td>
+              </tr>
+              <tr>
+                <td>Parent involvement</td>
+                <td>Parents have extensive rights and participate in planning</td>
+                <td>Unless you authorize it, the college communicates with you, not your parents</td>
+              </tr>
+              <tr>
+                <td>Accommodation delivery</td>
+                <td>School staff implement your accommodations</td>
+                <td>You deliver your accommodation letter to each professor each semester</td>
+              </tr>
+              <tr>
+                <td>Who initiates support</td>
+                <td>School has a legal obligation to act</td>
+                <td>You must register, request, and renew — no one will come looking for you</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOCUMENTATION DISCONNECT -->
+    <section class="page-section" aria-labelledby="docs-heading">
+      <div class="section-inner">
+        <p class="section-label">A gap most students don't know about</p>
+        <h2 id="docs-heading">The documentation disconnect</h2>
+        <p>When you register with your college's disability services office, they will ask you for documentation of your disability. Here's the problem: <strong>your high school IEP alone is often not enough.</strong></p>
+        <p>Most colleges want current documentation from a licensed professional — a psychologist, neuropsychologist, or physician — that describes your disability, how it's diagnosed, and how it affects your functioning. An IEP is an educational plan, not a clinical document. Some colleges will accept it; many won't, or will only accept it alongside other documentation.</p>
+        <p>This catches students off guard at orientation, when it's too late to do anything about it. The fix is to plan ahead:</p>
+
+        <ul style="padding-left: 20px; color: var(--text-sec); margin: 20px 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.95rem;">
+          <li>Get an updated neuropsychological evaluation before you graduate if possible — especially if your last one was more than 3 years ago.</li>
+          <li>Ask your school for documentation from the professionals who evaluated you (psychologist, speech therapist, etc.).</li>
+          <li>Request letters from providers who know your disability history.</li>
+          <li>Ask colleges you're considering what documentation they require before you apply — requirements vary significantly.</li>
+        </ul>
+
+        <div class="callout orange" role="note">
+          <p class="callout-body"><strong>Don't wait until the summer before college.</strong> Getting updated evaluations takes time and can be expensive. Start looking into it in 10th or 11th grade if you plan to go to college.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUMMARY OF PERFORMANCE -->
+    <section class="page-section alt-bg" aria-labelledby="sop-heading">
+      <div class="section-inner">
+        <p class="section-label">Something most students never hear about</p>
+        <h2 id="sop-heading">The Summary of Performance</h2>
+
+        <div class="sop-card">
+          <span class="sop-badge">IEP students only</span>
+          <h3>What is the Summary of Performance?</h3>
+          <p>The Summary of Performance (SOP) is a document that your school is required to provide you when your IEP ends — which happens at graduation or when you age out. It's a written summary of your academic achievement, functional performance, and recommendations for how to support your needs in postsecondary settings.</p>
+          <p><strong>Most students have never heard of it. Your school is required to give it to you.</strong></p>
+          <p>The SOP can be valuable when registering with college disability services — it documents your disability history in a way that may satisfy some of a college's documentation requirements, especially when combined with other records.</p>
+          <p><strong>What to do:</strong> Before you graduate, ask your case manager or special education coordinator for your Summary of Performance. Ask them to make sure it's thorough and includes specific information about your functional limitations and the accommodations that helped you. Keep it with your other important documents.</p>
+        </div>
+
+        <div class="callout blue" role="note">
+          <p class="callout-body">The SOP requirement is under IDEA (20 U.S.C. § 1414(c)(5)(B)(ii)). Your school must provide it — but they don't always bring it up. You may need to ask.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT TO DO BEFORE YOU GRADUATE -->
+    <section class="page-section" aria-labelledby="prep-heading">
+      <div class="section-inner">
+        <p class="section-label">Your pre-graduation checklist</p>
+        <h2 id="prep-heading">What to do before you graduate</h2>
+        <p>The earlier you do these things, the smoother your college transition will be.</p>
+
+        <ol class="action-steps" aria-label="Pre-graduation steps">
+          <li>
+            <div class="action-num" aria-hidden="true">1</div>
+            <div class="action-body">
+              <strong>Request your Summary of Performance</strong>
+              Ask your case manager before your senior year. Ask that it be detailed and include specific information about your functional limitations and the accommodations that have helped you.
+            </div>
+          </li>
+          <li>
+            <div class="action-num" aria-hidden="true">2</div>
+            <div class="action-body">
+              <strong>Get copies of all your evaluation reports</strong>
+              Every psychoeducational evaluation, speech-language report, occupational therapy report, and other assessment should be in your files. Request copies. These are your records — you're entitled to them.
+            </div>
+          </li>
+          <li>
+            <div class="action-num" aria-hidden="true">3</div>
+            <div class="action-body">
+              <strong>Ask about updated evaluations</strong>
+              If your last neuropsychological or psychoeducational evaluation is more than three years old, consider getting an updated one before you graduate. Talk to your parents and case manager about options — school, private evaluator, or community resources.
+            </div>
+          </li>
+          <li>
+            <div class="action-num" aria-hidden="true">4</div>
+            <div class="action-body">
+              <strong>Research what each college requires</strong>
+              Look up the disability services office at every college you're seriously considering. Find out what documentation they require and what accommodations they commonly provide. Some colleges have more robust programs than others.
+            </div>
+          </li>
+          <li>
+            <div class="action-num" aria-hidden="true">5</div>
+            <div class="action-body">
+              <strong>Practice advocating for yourself</strong>
+              In college, you're on your own. No parent in the meeting, no case manager sending reminders. Use your junior and senior years to practice talking directly to teachers and administrators about your needs. It's a skill, and it gets easier with practice.
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- HOW TO REGISTER -->
+    <section class="page-section alt-bg" aria-labelledby="register-heading">
+      <div class="section-inner">
+        <p class="section-label">Once you get to college</p>
+        <h2 id="register-heading">How to register with college disability services</h2>
+        <p>Every college that receives federal funding must have a disability services office (sometimes called the Office of Accessibility, Student Accessibility Services, or similar). Here's how the process typically works.</p>
+
+        <ol class="action-steps" aria-label="College disability registration steps">
+          <li>
+            <div class="action-num" aria-hidden="true">1</div>
+            <div class="action-body">
+              <strong>Register as early as possible — ideally before the semester starts</strong>
+              Don't wait until you're struggling. Registering in the summer before your first semester means your accommodations are in place from day one.
+            </div>
+          </li>
+          <li>
+            <div class="action-num" aria-hidden="true">2</div>
+            <div class="action-body">
+              <strong>Submit your documentation</strong>
+              Bring your evaluation reports, Summary of Performance, and any other relevant documentation. The disability services office will review it to determine what accommodations are appropriate.
+            </div>
+          </li>
+          <li>
+            <div class="action-num" aria-hidden="true">3</div>
+            <div class="action-body">
+              <strong>Meet with a disability services counselor</strong>
+              You'll typically have an intake meeting to discuss your needs and what accommodations are available. This is your chance to explain how your disability affects you in an academic setting — be specific.
+            </div>
+          </li>
+          <li>
+            <div class="action-num" aria-hidden="true">4</div>
+            <div class="action-body">
+              <strong>Receive and deliver your accommodation letter each semester</strong>
+              Most colleges issue a formal letter you give to each professor. <strong>You must deliver this letter yourself every semester.</strong> It doesn't go out automatically. If you forget, you may not receive your accommodations.
+            </div>
+          </li>
+          <li>
+            <div class="action-num" aria-hidden="true">5</div>
+            <div class="action-body">
+              <strong>Renew each semester</strong>
+              At most colleges, accommodations don't roll over automatically. Check your disability services office's renewal process and deadlines at the start of every semester.
+            </div>
+          </li>
+        </ol>
+
+        <div class="callout blue" role="note">
+          <p class="callout-body"><strong>This is not legal advice.</strong> College accommodation processes vary by institution. Contact your specific college's disability services office for their exact requirements and deadlines.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-block" aria-labelledby="cta-heading">
+      <div class="cta-inner">
+        <h2 id="cta-heading">Still have questions?</h2>
+        <p>Get answers to the most common questions students ask — about evaluations, college, their rights, and what to do when things go wrong.</p>
+        <a href="faq.html" class="btn-primary">
+          Read the FAQ
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" aria-label="AccessEd home">Access<span>Ed</span></a>
+        <p>A student-written resource about disability rights and K-12 accommodations. Written by a junior with ADHD, anxiety, and fine motor delay — for every student who deserves better.</p>
+      </div>
+      <nav class="footer-col" aria-label="Know your rights">
+        <h3>Know Your Rights</h3>
+        <ul role="list">
+          <li><a href="rights.html">Your Legal Rights</a></li>
+          <li><a href="504-vs-iep.html">504 vs IEP</a></li>
+          <li><a href="process.html">The Process</a></li>
+          <li><a href="accommodations.html">Accommodations</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-col" aria-label="Take action">
+        <h3>Take Action</h3>
+        <ul role="list">
+          <li><a href="advocate.html">Self-Advocacy</a></li>
+          <li><a href="college.html">Going to College</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="resources.html">Resources</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-disclaimer">
+      <p><strong>Disclaimer:</strong> This website is for informational purposes only and does not constitute legal advice. All legal information is based on federal U.S. law. Individual state laws and district policies may vary. If you have a legal dispute with your school, consult a qualified education attorney or disability rights organization.</p>
+      <p>AccessEd is an independent student project. It is not affiliated with any school, government agency, or legal organization. Laws and policies can change — verify important details with official sources.</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    toggle.addEventListener('click', function () {
+      const isOpen = mobileNav.classList.contains('open');
+      mobileNav.classList.toggle('open', !isOpen);
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      toggle.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+    });
+    mobileNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileNav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+      });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+        mobileNav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+  </script>
+
+</body>
+</html>
