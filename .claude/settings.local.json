@@ -5,7 +5,14 @@
       "Bash(grep -rn \"aria-hidden=\"\"true\"\">[^<1-9]\" *.html)",
       "Bash(grep -rn \"VERIFY\" *.html)",
       "Bash(grep -rn \"Transitioning to College\" *.html)",
-      "Bash(cd:*)"
+      "Bash(cd:*)",
+      "Bash(grep -c \"footer-updated\" *.html)",
+      "Bash(grep -l \"Transitioning to College\" *.html)",
+      "Bash(grep -n \"Transitioning to College\\\\|college.html\" *.html)",
+      "Bash(grep -n \"Transitioning to College\" *.html)",
+      "Bash(grep -A5 \"nav-mobile.*dialog\" *.html)",
+      "Bash(grep -h \"college.html\" *.html)",
+      "Bash(grep -rn \"Going to College\" *.html)"
     ]
   }
 }
