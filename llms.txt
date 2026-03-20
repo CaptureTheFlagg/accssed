@@ -1,0 +1,17 @@
+# AccessEd — llms.txt
+# Free educational resource for students with disabilities
+
+> AccessEd helps students understand their legal rights under IDEA, Section 504, and the ADA.
+> Content is informational only — not legal advice. Independent student project.
+
+## Pages
+
+- Home: Overview and site navigation
+- /rights: Federal disability rights under IDEA, 504, ADA
+- /504-vs-iep: Comparison guide for the two main plans
+- /process: Step-by-step accommodation request process
+- /accommodations: Common accommodations students can request
+- /advocate: How to advocate for your needs
+- /college: Transitioning to college with a disability
+- /faq: Common questions answered
+- /resources: Government links, orgs, and sample letters
