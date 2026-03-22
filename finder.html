@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accommodation Finder: AccessEd</title>
+  <meta name="description" content="Answer 6 quick questions and find out which accommodation plan fits your situation -- IEP, 504, or where to start when you have nothing yet." />
+  <link rel="canonical" href="https://accessed.netlify.app/finder" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Accommodation Finder: AccessEd" />
+  <meta property="og:description" content="Answer 6 quick questions and find out which accommodation plan fits your situation -- IEP, 504, or where to start when you have nothing yet." />
+  <meta property="og:url" content="https://accessed.netlify.app/finder" />
+  <meta property="og:site_name" content="AccessEd" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Accommodation Finder: AccessEd" />
+  <meta name="twitter:description" content="Answer 6 quick questions and find out which accommodation plan fits your situation -- IEP, 504, or where to start when you have nothing yet." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* =====================
+       CSS VARIABLES
+    ===================== */
+    :root {
+      --bg:          #FFFDF7;
+      --text:        #1C1C1C;
+      --text-sec:    #4A4A4A;
+      --accent-red:  #D94F2B;
+      --accent-blue: #1A56DB;
+      --white:       #FFFFFF;
+      --card-bg:     #FFFFFF;
+      --section-bg:  #F5F0E8;
+      --border:      #E0D9CE;
+      --font-head:   'Plus Jakarta Sans', sans-serif;
+      --font-body:   'Inter', sans-serif;
+      --max-text:    720px;
+      --max-layout:  1100px;
+    }
+
+    /* =====================
+       RESET & BASE
+    ===================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 17px; line-height: 1.75; }
+    img { max-width: 100%; display: block; }
+    a { color: var(--accent-blue); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--accent-red); }
+    a:focus-visible { outline: 3px solid var(--accent-blue); outline-offset: 3px; border-radius: 3px; }
+
+    /* =====================
+       SKIP LINK
+    ===================== */
+    .skip-link { position: absolute; top: -100%; left: 0; background: var(--accent-blue); color: var(--white); padding: 8px 16px; font-weight: 600; text-decoration: none; border-radius: 0 0 8px 0; z-index: 9999; font-size: 1rem; }
+    .skip-link:focus { top: 0; }
+
+    /* =====================
+       NAVIGATION
+    ===================== */
+    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--border); height: 60px; }
+    .nav-inner { max-width: var(--max-layout); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--font-head); font-weight: 800; font-size: 1.2rem; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--accent-red); }
+    .nav-logo:hover { color: var(--text); }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a { font-size: 0.95rem; font-weight: 500; color: var(--text-sec); text-decoration: none; padding: 6px 9px; border-radius: 6px; transition: background 0.15s, color 0.15s; white-space: nowrap; }
+    .nav-links a:hover { background: var(--section-bg); color: var(--text); }
+    .nav-links a.active { color: var(--accent-red); font-weight: 600; }
+    .nav-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 8px; border-radius: 8px; }
+    .nav-toggle:focus-visible { outline: 3px solid var(--accent-blue); outline-offset: 2px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile { display: none; position: fixed; top: 60px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 16px 24px 24px; z-index: 99; }
+    .nav-mobile.open { display: block; }
+    .nav-mobile ul { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+    .nav-mobile a { font-size: 1rem; font-weight: 500; color: var(--text-sec); text-decoration: none; padding: 10px 12px; border-radius: 8px; min-height: 44px; display: flex; align-items: center; }
+    .nav-mobile a:hover, .nav-mobile a:focus-visible { background: var(--section-bg); color: var(--text); }
+    .nav-mobile a.active { color: var(--accent-red); font-weight: 600; }
+    @media (min-width: 900px) { .nav-toggle { display: none; } .nav-links { display: flex; } }
+    @media (max-width: 899px) { .nav-links { display: none; } .nav-toggle { display: flex; } }
+
+    main { padding-top: 60px; }
+
+    /* =====================
+       HERO
+    ===================== */
+    .hero { background: var(--text); color: var(--white); padding: 64px 24px 72px; text-align: center; }
+    .hero-inner { max-width: var(--max-text); margin: 0 auto; }
+    .hero-eyebrow { font-size: 1rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #A8B4C0; margin-bottom: 20px; }
+    .hero h1 { font-family: var(--font-head); font-size: clamp(2rem, 5.5vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 20px; }
+    .hero h1 em { font-style: normal; color: #F4845F; }
+    .hero-desc { font-size: 1.05rem; color: #BDC8D4; max-width: 520px; margin: 0 auto; line-height: 1.7; }
+
+    /* =====================
+       QUIZ WRAPPER
+    ===================== */
+    .quiz-section { padding: 56px 24px 80px; }
+    .quiz-inner { max-width: 680px; margin: 0 auto; }
+
+    /* =====================
+       PROGRESS
+    ===================== */
+    .quiz-progress { margin-bottom: 32px; }
+    .progress-label { font-size: 1rem; font-weight: 600; color: var(--text-sec); margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+    .progress-step-text { font-size: 1rem; color: var(--accent-red); font-weight: 700; }
+    .progress-track { height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--accent-red); border-radius: 99px; transition: width 0.3s ease; }
+
+    /* =====================
+       QUESTION CARD
+    ===================== */
+    .quiz-question { display: none; }
+    .quiz-question.active { display: block; animation: fadeIn 0.2s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .quiz-question.active { animation: none; } }
+
+    .question-text { font-family: var(--font-head); font-size: clamp(1.2rem, 3vw, 1.5rem); font-weight: 800; line-height: 1.25; letter-spacing: -0.02em; color: var(--text); margin-bottom: 8px; }
+    .question-note { font-size: 0.95rem; color: var(--text-sec); margin-bottom: 24px; font-style: italic; }
+
+    .answer-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .answer-btn {
+      width: 100%;
+      text-align: left;
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 18px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      min-height: 52px;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+      line-height: 1.5;
+    }
+    .answer-btn:hover { border-color: var(--accent-red); background: #FFF7F5; color: var(--text); }
+    .answer-btn:focus-visible { outline: 3px solid var(--accent-blue); outline-offset: 2px; border-color: var(--accent-blue); }
+    .answer-btn.selected { border-color: var(--accent-red); background: #FFF0EC; font-weight: 600; }
+
+    /* =====================
+       QUIZ NAV (back/next)
+    ===================== */
+    .quiz-nav { display: flex; align-items: center; gap: 12px; margin-top: 4px; }
+    .btn-back {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: none; border: 2px solid var(--border); border-radius: 10px;
+      padding: 10px 18px; font-family: var(--font-body); font-size: 1rem;
+      font-weight: 600; color: var(--text-sec); cursor: pointer;
+      min-height: 44px; transition: border-color 0.15s, color 0.15s;
+    }
+    .btn-back:hover { border-color: var(--text-sec); color: var(--text); }
+    .btn-back:focus-visible { outline: 3px solid var(--accent-blue); outline-offset: 2px; }
+
+    /* =====================
+       RESULTS
+    ===================== */
+    .quiz-results { display: none; animation: fadeIn 0.3s ease; }
+    .quiz-results.visible { display: block; }
+    @media (prefers-reduced-motion: reduce) { .quiz-results.visible { animation: none; } }
+
+    .result-card { background: var(--white); border: 2px solid var(--border); border-radius: 16px; padding: 36px 32px 32px; margin-bottom: 24px; }
+    .result-badge { display: inline-block; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--white); background: var(--accent-red); border-radius: 6px; padding: 4px 10px; margin-bottom: 16px; }
+    .result-headline { font-family: var(--font-head); font-size: clamp(1.3rem, 3.5vw, 1.8rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; color: var(--text); margin-bottom: 16px; }
+    .result-context { font-size: 1.025rem; color: var(--text-sec); line-height: 1.8; margin-bottom: 20px; }
+    .result-context p { margin-bottom: 14px; }
+    .result-context p:last-child { margin-bottom: 0; }
+
+    .result-steps-label { font-size: 1rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text); margin-bottom: 16px; }
+    .result-steps { list-style: none; padding: 0; margin-bottom: 28px; display: flex; flex-direction: column; gap: 14px; }
+    .result-steps li { display: flex; gap: 14px; align-items: flex-start; font-size: 1rem; color: var(--text-sec); line-height: 1.65; }
+    .step-num { flex-shrink: 0; width: 28px; height: 28px; background: var(--accent-red); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-size: 0.9rem; font-weight: 800; margin-top: 1px; }
+
+    .result-links-label { font-size: 1rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text); margin-bottom: 12px; }
+    .result-links { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+    .result-link-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--section-bg); border: 1.5px solid var(--border); border-radius: 8px; padding: 9px 16px; font-size: 0.95rem; font-weight: 600; color: var(--text); text-decoration: none; transition: border-color 0.15s, color 0.15s, background 0.15s; min-height: 44px; }
+    .result-link-btn:hover { border-color: var(--accent-red); color: var(--accent-red); background: #FFF7F5; }
+
+    .result-actions { display: flex; flex-wrap: wrap; gap: 10px; padding-top: 20px; border-top: 1px solid var(--border); }
+    .btn-share, .btn-print {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 18px; border-radius: 10px; font-family: var(--font-body);
+      font-size: 1rem; font-weight: 600; cursor: pointer; min-height: 44px;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+    .btn-share { background: var(--accent-blue); color: var(--white); border: 2px solid var(--accent-blue); }
+    .btn-share:hover { background: #1344B8; border-color: #1344B8; color: var(--white); }
+    .btn-share:focus-visible { outline: 3px solid var(--accent-blue); outline-offset: 3px; }
+    .btn-print { background: none; color: var(--text); border: 2px solid var(--border); }
+    .btn-print:hover { border-color: var(--text-sec); color: var(--text); }
+    .btn-print:focus-visible { outline: 3px solid var(--accent-blue); outline-offset: 3px; }
+    .share-confirm { font-size: 0.9rem; color: var(--text-sec); display: none; align-items: center; gap: 6px; margin-top: 8px; width: 100%; }
+    .share-confirm.visible { display: flex; }
+
+    .result-disclaimer { font-size: 0.9rem; color: var(--text-sec); line-height: 1.6; margin-top: 20px; padding: 14px 18px; background: var(--section-bg); border-radius: 8px; border: 1px solid var(--border); }
+
+    .btn-restart { display: inline-flex; align-items: center; gap: 8px; background: none; border: 2px solid var(--border); border-radius: 10px; padding: 10px 18px; font-family: var(--font-body); font-size: 1rem; font-weight: 600; color: var(--text-sec); cursor: pointer; min-height: 44px; transition: border-color 0.15s, color 0.15s; margin-top: 12px; }
+    .btn-restart:hover { border-color: var(--text-sec); color: var(--text); }
+    .btn-restart:focus-visible { outline: 3px solid var(--accent-blue); outline-offset: 3px; }
+
+    /* =====================
+       FOOTER
+    ===================== */
+    footer { background: var(--section-bg); border-top: 1px solid var(--border); padding: 40px 24px; }
+    .footer-inner { max-width: var(--max-layout); margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 32px; }
+    @media (min-width: 640px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr; gap: 40px; } }
+    .footer-brand .nav-logo { display: inline-block; margin-bottom: 10px; font-size: 1.1rem; }
+    .footer-brand p { font-size: 1rem; color: var(--text-sec); max-width: 300px; line-height: 1.6; }
+    .footer-col h3 { font-family: var(--font-head); font-size: 1rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col a { font-size: 1rem; color: var(--text-sec); text-decoration: none; transition: color 0.15s; }
+    .footer-col a:hover { color: var(--accent-red); }
+    .footer-disclaimer { border-top: 1px solid var(--border); padding-top: 24px; margin-top: 8px; max-width: var(--max-layout); margin-left: auto; margin-right: auto; }
+    .footer-disclaimer p { font-size: 1rem; color: var(--text-sec); line-height: 1.6; }
+    .footer-disclaimer p + p { margin-top: 8px; }
+    .footer-updated { font-size: 1rem; color: var(--text-sec); margin-bottom: 14px; }
+
+    /* =====================
+       REDUCED MOTION
+    ===================== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+      html { scroll-behavior: auto; }
+      .progress-fill { transition: none; }
+    }
+
+    /* =====================
+       RESPONSIVE
+    ===================== */
+    @media (max-width: 480px) {
+      .hero { padding: 48px 20px 56px; }
+      .result-card { padding: 24px 20px; }
+      .quiz-section { padding: 40px 20px 64px; }
+    }
+
+    @media print {
+      .site-nav, .nav-mobile, .btn-back, .btn-restart, .btn-share, .btn-print, .quiz-progress, .quiz-question:not(.active) { display: none !important; }
+      .quiz-results { display: block !important; }
+      footer { display: none; }
+      body { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="AccessEd home">Access<span>Ed</span></a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="finder.html" class="active" aria-current="page">Finder</a></li>
+      <li><a href="504-vs-iep.html">504 vs IEP</a></li>
+      <li><a href="rights.html">Your Rights</a></li>
+      <li><a href="process.html">The Process</a></li>
+      <li><a href="accommodations.html">Accommodations</a></li>
+      <li><a href="advocate.html">Self-Advocacy</a></li>
+      <li><a href="college.html">College</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-mobile" id="mobile-nav" role="dialog" aria-label="Navigation menu">
+  <ul role="list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="finder.html" class="active" aria-current="page">Finder</a></li>
+    <li><a href="504-vs-iep.html">504 vs IEP</a></li>
+    <li><a href="rights.html">Your Rights</a></li>
+    <li><a href="process.html">The Process</a></li>
+    <li><a href="accommodations.html">Accommodations</a></li>
+    <li><a href="advocate.html">Self-Advocacy</a></li>
+    <li><a href="college.html">College</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</div>
+
+<main id="main-content">
+
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Interactive quiz</p>
+      <h1 id="hero-heading">Find your <em>next step.</em></h1>
+      <p class="hero-desc">Answer 6 short questions. Get a plain-English explanation of where you stand and exactly what to do next. No jargon. No runaround.</p>
+    </div>
+  </section>
+
+  <section class="quiz-section" aria-labelledby="quiz-label">
+    <div class="quiz-inner">
+
+      <!-- Progress indicator -->
+      <div class="quiz-progress" id="quiz-progress" aria-live="polite" aria-atomic="true">
+        <div class="progress-label">
+          <span id="progress-text">Question 1 of 6</span>
+          <span class="progress-step-text" id="progress-step" aria-hidden="true">1 / 6</span>
+        </div>
+        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="6" aria-valuenow="1" aria-labelledby="progress-text">
+          <div class="progress-fill" id="progress-fill" style="width: 16.67%"></div>
+        </div>
+      </div>
+
+      <!-- ========================
+           QUESTION 1
+      ======================== -->
+      <div class="quiz-question active" id="q1" role="group" aria-labelledby="q1-text">
+        <p class="question-text" id="q1-text">Are you struggling in school because of a physical, mental, or learning difference?</p>
+        <p class="question-note">All answers continue. No one gets turned away.</p>
+        <div class="answer-list" role="list">
+          <button class="answer-btn" role="listitem" data-q="1" data-v="yes">Yes, definitely</button>
+          <button class="answer-btn" role="listitem" data-q="1" data-v="think-so">I think so, but I am not sure</button>
+          <button class="answer-btn" role="listitem" data-q="1" data-v="noone-believes">I think so, but no one believes me</button>
+          <button class="answer-btn" role="listitem" data-q="1" data-v="other">No, I am asking for someone else (parent or friend)</button>
+        </div>
+        <div class="quiz-nav">
+          <!-- No back button on Q1 -->
+        </div>
+      </div>
+
+      <!-- ========================
+           QUESTION 2
+      ======================== -->
+      <div class="quiz-question" id="q2" role="group" aria-labelledby="q2-text">
+        <p class="question-text" id="q2-text">Do you have an official diagnosis from a doctor, psychologist, or mental health professional?</p>
+        <div class="answer-list" role="list">
+          <button class="answer-btn" role="listitem" data-q="2" data-v="yes">Yes, I have a diagnosis</button>
+          <button class="answer-btn" role="listitem" data-q="2" data-v="told-might">No, but I have been told I might have something</button>
+          <button class="answer-btn" role="listitem" data-q="2" data-v="no-idea">No, and I have no idea where to start</button>
+          <button class="answer-btn" role="listitem" data-q="2" data-v="unsure">I am not sure what counts as a diagnosis</button>
+        </div>
+        <div class="quiz-nav">
+          <button class="btn-back" id="back-q2" type="button">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4l-4 4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Back
+          </button>
+        </div>
+      </div>
+
+      <!-- ========================
+           QUESTION 3
+      ======================== -->
+      <div class="quiz-question" id="q3" role="group" aria-labelledby="q3-text">
+        <p class="question-text" id="q3-text">How is your condition affecting your school experience?</p>
+        <p class="question-note">Pick the one that fits best.</p>
+        <div class="answer-list" role="list">
+          <button class="answer-btn" role="listitem" data-q="3" data-v="time" data-route="504">I run out of time on tests or assignments</button>
+          <button class="answer-btn" role="listitem" data-q="3" data-v="focus" data-route="504">I have trouble focusing, staying organized, or keeping up</button>
+          <button class="answer-btn" role="listitem" data-q="3" data-v="instruction" data-route="iep">I need different instruction, not just more time</button>
+          <button class="answer-btn" role="listitem" data-q="3" data-v="physical" data-route="504">I have a physical condition that affects how I move, write, or get around</button>
+          <button class="answer-btn" role="listitem" data-q="3" data-v="mental-health" data-route="504">I have anxiety, depression, or a mental health condition affecting my attendance or performance</button>
+          <button class="answer-btn" role="listitem" data-q="3" data-v="multiple" data-route="iep">Multiple of these apply to me</button>
+        </div>
+        <div class="quiz-nav">
+          <button class="btn-back" id="back-q3" type="button">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4l-4 4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Back
+          </button>
+        </div>
+      </div>
+
+      <!-- ========================
+           QUESTION 4
+      ======================== -->
+      <div class="quiz-question" id="q4" role="group" aria-labelledby="q4-text">
+        <p class="question-text" id="q4-text">Do you currently have any support plan at school?</p>
+        <div class="answer-list" role="list">
+          <button class="answer-btn" role="listitem" data-q="4" data-v="iep" data-skip="E">Yes, I have an IEP</button>
+          <button class="answer-btn" role="listitem" data-q="4" data-v="504" data-skip="E">Yes, I have a 504 Plan</button>
+          <button class="answer-btn" role="listitem" data-q="4" data-v="expired" data-skip="F">I had one before but it expired or I changed schools</button>
+          <button class="answer-btn" role="listitem" data-q="4" data-v="no">No, I have never had one</button>
+          <button class="answer-btn" role="listitem" data-q="4" data-v="unknown">I do not know, no one has told me</button>
+        </div>
+        <div class="quiz-nav">
+          <button class="btn-back" id="back-q4" type="button">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4l-4 4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Back
+          </button>
+        </div>
+      </div>
+
+      <!-- ========================
+           QUESTION 5
+      ======================== -->
+      <div class="quiz-question" id="q5" role="group" aria-labelledby="q5-text">
+        <p class="question-text" id="q5-text">Do your parents or guardians support you getting accommodations?</p>
+        <div class="answer-list" role="list">
+          <button class="answer-btn" role="listitem" data-q="5" data-v="yes">Yes, they are on board</button>
+          <button class="answer-btn" role="listitem" data-q="5" data-v="unsure" data-flag="parentNotSure">They are not sure or do not fully understand</button>
+          <button class="answer-btn" role="listitem" data-q="5" data-v="no" data-flag="pathA">No, they do not believe it is necessary</button>
+          <button class="answer-btn" role="listitem" data-q="5" data-v="adult">I am 18 or older, this does not apply to me</button>
+        </div>
+        <div class="quiz-nav">
+          <button class="btn-back" id="back-q5" type="button">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4l-4 4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Back
+          </button>
+        </div>
+      </div>
+
+      <!-- ========================
+           QUESTION 6
+      ======================== -->
+      <div class="quiz-question" id="q6" role="group" aria-labelledby="q6-text">
+        <p class="question-text" id="q6-text">How urgent is your situation?</p>
+        <div class="answer-list" role="list">
+          <button class="answer-btn" role="listitem" data-q="6" data-v="crisis" data-tone="crisis">I am currently failing or at serious risk</button>
+          <button class="answer-btn" role="listitem" data-q="6" data-v="managing" data-tone="standard">I am struggling but managing</button>
+          <button class="answer-btn" role="listitem" data-q="6" data-v="planning" data-tone="planning">I am planning ahead before things get worse</button>
+          <button class="answer-btn" role="listitem" data-q="6" data-v="research" data-tone="neutral">I am researching for someone else</button>
+        </div>
+        <div class="quiz-nav">
+          <button class="btn-back" id="back-q6" type="button">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4l-4 4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Back
+          </button>
+        </div>
+      </div>
+
+      <!-- ========================
+           RESULTS
+      ======================== -->
+      <div class="quiz-results" id="quiz-results" aria-live="polite" aria-atomic="true" tabindex="-1">
+        <!-- Populated by JavaScript -->
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" aria-label="AccessEd home">Access<span>Ed</span></a>
+      <p>A student-written resource about disability rights and K-12 accommodations. Written by a junior with ADHD, anxiety, and fine motor delay, for every student who deserves better.</p>
+    </div>
+    <nav class="footer-col" aria-label="Know your rights">
+      <h3>Know Your Rights</h3>
+      <ul role="list">
+        <li><a href="rights.html">Your Legal Rights</a></li>
+        <li><a href="504-vs-iep.html">504 vs IEP</a></li>
+        <li><a href="process.html">The Process</a></li>
+        <li><a href="accommodations.html">Accommodations</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-col" aria-label="Take action">
+      <h3>Take Action</h3>
+      <ul role="list">
+        <li><a href="finder.html">Accommodation Finder</a></li>
+        <li><a href="advocate.html">Self-Advocacy</a></li>
+        <li><a href="college.html">Going to College</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="footer-disclaimer">
+    <p class="footer-updated">Last updated: March 2026</p>
+    <p><strong>Disclaimer:</strong> This website is for informational purposes only and does not constitute legal advice. All legal information is based on federal U.S. law. Individual state laws and district policies may vary. If you have a legal dispute with your school, consult a qualified education attorney or disability rights organization.</p>
+    <p>AccessEd is an independent student project. It is not affiliated with any school, government agency, or legal organization. Laws and policies can change; verify important details with official sources.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* =====================
+     STATE
+  ===================== */
+  var state = {
+    current: 1,
+    maxReached: 1,
+    answers: {},
+    iepRoute: false,
+    parentNotSure: false,
+    pathAFlag: false,
+    tone: 'standard',
+    history: [1],
+  };
+
+  /* =====================
+     PATH CONTENT
+  ===================== */
+  var paths = {
+
+    A: {
+      badge: 'Path A',
+      headline: 'You still have rights. Even without parental support.',
+      context: function (s) {
+        var intro = 'Not having your family on board is genuinely hard. I want you to know that your struggle is real, and your rights under federal law are real too. You do not need your parents to believe you for your experience to matter.';
+        var body = 'Even without parental agreement, you can take real steps on your own. If you are 18 or close to it, you have even more legal standing to act directly. You are not out of options.';
+        return [intro, body];
+      },
+      steps: [
+        'Talk to your school counselor privately. Ask to be referred for a disability evaluation. You do not need a parent to start that conversation, and your counselor is required to take your concerns seriously.',
+        'Put your request in writing and keep a copy. A written request starts the official clock. Your school cannot ignore a written request the way they can ignore a verbal one.',
+        'Contact your state\'s Protection and Advocacy organization. They offer free help to students with disabilities, and they can assist you even if your parents are not involved. The Resources page has links.',
+      ],
+      links: [
+        { href: 'rights.html', label: 'Your Legal Rights' },
+        { href: 'advocate.html', label: 'Self-Advocacy' },
+        { href: 'resources.html', label: 'Resources' },
+      ],
+    },
+
+    B: {
+      badge: 'Path B',
+      headline: 'Good news: there is a clear first step.',
+      context: function (s) {
+        var intro = 'The process is more straightforward than most people think. It starts with a written request for an evaluation. Once you send that letter, your school has a legal obligation to respond.';
+        var body = 'You do not need to have everything figured out before you ask. You just need to ask in writing. Here is what to do.';
+        return [intro, body];
+      },
+      steps: [
+        'Write a letter to your school\'s principal or special education coordinator asking for a disability evaluation. The Resources page has a sample letter you can copy and adapt.',
+        'Send it by email or certified mail so there is a clear record of the date it was received. Keep a copy for yourself.',
+        'Your school must respond within a reasonable timeframe. Many districts use 30 days as their standard. If they do not respond, that is a violation you can report.',
+      ],
+      links: [
+        { href: 'process.html', label: 'The Process' },
+        { href: 'resources.html', label: 'Resources' },
+      ],
+    },
+
+    C: {
+      badge: 'Path C',
+      headline: 'A 504 Plan is probably the right fit for you.',
+      context: function (s) {
+        var intro = 'A 504 Plan is a legal document that lists adjustments your school must make so you have equal access to learning. It does not change what you are taught. It changes the conditions around you, things like how much time you get, where you sit, or what tools you can use.';
+        var body = 'Common 504 accommodations include extended time, quiet testing rooms, preferential seating, permission to record lectures, and frequent breaks. The plan travels with you from class to class and is legally enforceable.';
+        return [intro, body];
+      },
+      steps: [
+        'Ask your school counselor or principal to start a 504 evaluation. Put the request in writing and keep a copy. Your school cannot legally say no to evaluating you.',
+        'Bring any documentation you have from a doctor, therapist, or outside evaluator. A diagnosis helps, but your school can also conduct its own evaluation if you do not have one.',
+        'Once the evaluation is complete and your school agrees a 504 is appropriate, they will hold a meeting to write the plan. You and your parents have the right to attend and participate.',
+      ],
+      links: [
+        { href: '504-vs-iep.html', label: '504 vs IEP' },
+        { href: 'accommodations.html', label: 'Common Accommodations' },
+      ],
+    },
+
+    D: {
+      badge: 'Path D',
+      headline: 'An IEP might be the right fit for you.',
+      context: function (s) {
+        var intro = 'An IEP (Individualized Education Program) goes further than a 504. It can change how you are taught, not just the environment around you. It includes specialized instruction, related services like counseling or speech therapy, and a detailed plan developed by a team that includes you and your parents.';
+        var body = 'IEPs are built for students who need more than access adjustments. If you need different instruction, a smaller class, or specialized services, this is the path to pursue.';
+        return [intro, body];
+      },
+      steps: [
+        'Ask your school in writing for a special education evaluation under IDEA. Once you give consent, your school has 60 calendar days to complete the evaluation.',
+        'After the evaluation, if your school finds that you qualify, they must hold an IEP meeting within 30 days. You and your parents have the right to attend, speak, and disagree with what is proposed.',
+        'Review the IEP carefully before signing. Make sure the goals and services reflect what you actually need, not just what is easiest for the school.',
+      ],
+      links: [
+        { href: '504-vs-iep.html', label: '504 vs IEP' },
+        { href: 'process.html', label: 'The Process' },
+      ],
+    },
+
+    E: {
+      badge: 'Path E',
+      headline: 'Your plan exists. Here is how to enforce it.',
+      context: function (s) {
+        var intro = 'Having a plan on paper is not the same as having it followed. A lot of students have IEPs or 504s that sit in a file while teachers do their own thing. That is a real and common problem.';
+        var body = 'You have the legal right to have your plan implemented. Every accommodation listed in your plan must be provided. When it is not, that is a violation you can document and address.';
+        return [intro, body];
+      },
+      steps: [
+        'Get a copy of your current plan right now if you do not already have one. You and your parents are entitled to a copy at any time. Ask your counselor or case manager.',
+        'Start a log of specific instances when your accommodations were not provided. Write down the date, the class, what the accommodation was, and what happened instead. This documentation matters a lot.',
+        'Request a meeting with your school\'s special education coordinator or 504 coordinator. Come prepared with your log and a specific list of what needs to change.',
+      ],
+      links: [
+        { href: 'advocate.html', label: 'Self-Advocacy' },
+        { href: 'resources.html', label: 'Resources' },
+      ],
+    },
+
+    F: {
+      badge: 'Path F',
+      headline: 'Your rights did not disappear.',
+      context: function (s) {
+        var intro = 'Changing schools or having a plan lapse does not mean you start from zero. Your previous IEP or 504 is a record that your needs were already recognized and evaluated. That matters.';
+        var body = 'Your new school has a legal obligation to review your prior plan and either continue services or complete a new evaluation. They cannot simply ignore what was already determined.';
+        return [intro, body];
+      },
+      steps: [
+        'Contact your new school\'s special education coordinator or 504 coordinator. Provide any records from your previous plan. If you do not have records, your old school must give them to you.',
+        'If your new school says your old plan does not apply, send a written request for a new evaluation. They cannot legally ignore a written request.',
+        'If your school refuses to provide any services while the evaluation is in progress, contact your state\'s Department of Education or a disability rights organization. The Resources page has contacts.',
+      ],
+      links: [
+        { href: 'process.html', label: 'The Process' },
+        { href: 'rights.html', label: 'Your Legal Rights' },
+      ],
+    },
+
+  };
+
+  /* =====================
+     TONE MODIFIERS
+  ===================== */
+  function getTonePrefix(tone) {
+    if (tone === 'crisis') {
+      return 'I want to be direct with you: if you are currently failing or at serious risk, this is urgent. The steps below are what I would tell a friend who needed to move fast. Do not wait.';
+    }
+    if (tone === 'planning') {
+      return 'Getting ahead of this is smart. Starting the process before things reach a breaking point gives you more options and puts you in a stronger position.';
+    }
+    return null;
+  }
+
+  /* =====================
+     NAVIGATION
+  ===================== */
+  var progress = document.getElementById('quiz-progress');
+  var progressFill = document.getElementById('progress-fill');
+  var progressText = document.getElementById('progress-text');
+  var progressStep = document.getElementById('progress-step');
+  var progressBar = progress.querySelector('[role="progressbar"]');
+
+  function updateProgress(qNum, total) {
+    total = total || 6;
+    var pct = (qNum / total) * 100;
+    progressFill.style.width = pct.toFixed(2) + '%';
+    progressText.textContent = 'Question ' + qNum + ' of ' + total;
+    progressStep.textContent = qNum + ' / ' + total;
+    progressBar.setAttribute('aria-valuenow', qNum);
+  }
+
+  function showQuestion(qNum) {
+    var all = document.querySelectorAll('.quiz-question');
+    all.forEach(function (el) {
+      el.classList.remove('active');
+      el.setAttribute('aria-hidden', 'true');
+    });
+    var target = document.getElementById('q' + qNum);
+    if (!target) return;
+    target.classList.add('active');
+    target.removeAttribute('aria-hidden');
+    state.current = qNum;
+    if (qNum > state.maxReached) state.maxReached = qNum;
+    updateProgress(qNum);
+    // Focus the question text for screen reader announcement
+    var qText = target.querySelector('.question-text');
+    if (qText) { qText.setAttribute('tabindex', '-1'); qText.focus(); }
+    document.getElementById('quiz-results').classList.remove('visible');
+  }
+
+  function goBack() {
+    if (state.history.length < 2) return;
+    state.history.pop();
+    var prev = state.history[state.history.length - 1];
+    showQuestion(prev);
+  }
+
+  /* =====================
+     ANSWER HANDLING
+  ===================== */
+  document.querySelectorAll('.answer-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var q = parseInt(btn.getAttribute('data-q'), 10);
+      var v = btn.getAttribute('data-v');
+      var route = btn.getAttribute('data-route');
+      var skip = btn.getAttribute('data-skip');
+      var flag = btn.getAttribute('data-flag');
+      var tone = btn.getAttribute('data-tone');
+
+      // Save answer
+      state.answers['q' + q] = v;
+
+      // Highlight selection briefly
+      var siblings = btn.closest('.answer-list').querySelectorAll('.answer-btn');
+      siblings.forEach(function (s) { s.classList.remove('selected'); });
+      btn.classList.add('selected');
+
+      // Handle flags
+      if (route === 'iep') state.iepRoute = true;
+      if (route === '504') state.iepRoute = false;
+      if (flag === 'parentNotSure') state.parentNotSure = true;
+      if (flag === 'pathA') state.pathAFlag = true;
+      if (tone) state.tone = tone;
+
+      // Short delay for visual feedback, then navigate
+      setTimeout(function () {
+        btn.classList.remove('selected');
+        advanceFrom(q, v, skip);
+      }, 120);
+    });
+
+    btn.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        btn.click();
+      }
+    });
+  });
+
+  function advanceFrom(q, v, skip) {
+    // Q4: two answers skip directly to results
+    if (skip) {
+      showResults(skip);
+      return;
+    }
+
+    // Q5: "No, they do not believe it" -> Path A immediately
+    if (q === 5 && v === 'no') {
+      showResults('A');
+      return;
+    }
+
+    // Q6: determine and show results
+    if (q === 6) {
+      var path;
+      if (state.pathAFlag) {
+        path = 'A';
+      } else if (state.iepRoute) {
+        path = 'D';
+      } else {
+        path = 'C';
+      }
+      showResults(path);
+      return;
+    }
+
+    // Normal: advance to next question
+    var next = q + 1;
+    state.history.push(next);
+    showQuestion(next);
+  }
+
+  /* =====================
+     BACK BUTTONS
+  ===================== */
+  ['back-q2', 'back-q3', 'back-q4', 'back-q5', 'back-q6'].forEach(function (id) {
+    var btn = document.getElementById(id);
+    if (btn) {
+      btn.addEventListener('click', function () {
+        // Reset any flags that the current question set
+        var currentQ = parseInt(state.current, 10);
+        if (currentQ === 3) { state.iepRoute = false; }
+        if (currentQ === 5) { state.parentNotSure = false; state.pathAFlag = false; }
+        if (currentQ === 6) { state.tone = 'standard'; }
+        goBack();
+      });
+    }
+  });
+
+  /* =====================
+     SHOW RESULTS
+  ===================== */
+  function showResults(pathKey) {
+    var pathData = paths[pathKey];
+    if (!pathData) return;
+
+    // Hide all questions
+    document.querySelectorAll('.quiz-question').forEach(function (el) {
+      el.classList.remove('active');
+      el.setAttribute('aria-hidden', 'true');
+    });
+
+    // Update progress to show completion
+    progressFill.style.width = '100%';
+    progressText.textContent = 'Results ready';
+    progressStep.textContent = 'Done';
+    progressBar.setAttribute('aria-valuenow', 6);
+
+    // Build result HTML
+    var contextParagraphs = pathData.context(state);
+    var tonePrefix = getTonePrefix(state.tone);
+
+    var contextHTML = '';
+    if (tonePrefix) {
+      contextHTML += '<p><strong>' + escHtml(tonePrefix) + '</strong></p>';
+    }
+    contextParagraphs.forEach(function (p) {
+      contextHTML += '<p>' + escHtml(p) + '</p>';
+    });
+
+    // Parent not sure flag: add extra paragraph
+    if (state.parentNotSure && pathKey !== 'A' && pathKey !== 'E' && pathKey !== 'F') {
+      contextHTML += '<p>Since your parents are still learning about this process, it often helps to show them information rather than explain it in conversation. The <a href="resources.html">Resources page</a> has guides written specifically for parents. Bringing them something printed to read on their own time tends to work better than trying to explain it all at once.</p>';
+    }
+
+    var stepsHTML = pathData.steps.map(function (step, i) {
+      return '<li><span class="step-num" aria-hidden="true">' + (i + 1) + '</span><span>' + escHtml(step) + '</span></li>';
+    }).join('');
+
+    var linksHTML = pathData.links.map(function (link) {
+      return '<a href="' + link.href + '" class="result-link-btn">' + escHtml(link.label) + ' <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>';
+    }).join('');
+
+    var html = '<div class="result-card">' +
+      '<span class="result-badge">' + escHtml(pathData.badge) + '</span>' +
+      '<h2 class="result-headline">' + escHtml(pathData.headline) + '</h2>' +
+      '<div class="result-context">' + contextHTML + '</div>' +
+      '<p class="result-steps-label">Your next steps</p>' +
+      '<ol class="result-steps" role="list">' + stepsHTML + '</ol>' +
+      '<p class="result-links-label">Read more</p>' +
+      '<div class="result-links">' + linksHTML + '</div>' +
+      '<div class="result-actions">' +
+        '<button class="btn-share" id="btn-share" type="button">' +
+          '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+          'Copy link to results' +
+        '</button>' +
+        '<button class="btn-print" id="btn-print" type="button">' +
+          '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6v-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+          'Print this page' +
+        '</button>' +
+        '<span class="share-confirm" id="share-confirm" role="status" aria-live="polite">' +
+          '<svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8l4 4 8-8" stroke="#1C7C4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+          'Link copied!' +
+        '</span>' +
+      '</div>' +
+      '<p class="result-disclaimer">This is a guide, not a legal determination. Your school\'s evaluation team makes the final call on eligibility. If you have a serious dispute, contact a disability rights organization or an education attorney.</p>' +
+    '</div>' +
+    '<button class="btn-restart" id="btn-restart" type="button">' +
+      '<svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 4v5h5M15 12v-5h-5M14.5 9A6 6 0 103 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+      'Start over' +
+    '</button>';
+
+    var resultsEl = document.getElementById('quiz-results');
+    resultsEl.innerHTML = html;
+    resultsEl.classList.add('visible');
+    resultsEl.setAttribute('tabindex', '-1');
+    resultsEl.focus();
+
+    // Share button
+    var shareBtn = document.getElementById('btn-share');
+    var shareConfirm = document.getElementById('share-confirm');
+    if (shareBtn) {
+      shareBtn.addEventListener('click', function () {
+        var url = window.location.href.split('?')[0] + '?path=' + pathKey;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(function () {
+            shareConfirm.classList.add('visible');
+            setTimeout(function () { shareConfirm.classList.remove('visible'); }, 3000);
+          }).catch(function () {
+            fallbackCopy(url, shareConfirm);
+          });
+        } else {
+          fallbackCopy(url, shareConfirm);
+        }
+      });
+    }
+
+    // Print button
+    var printBtn = document.getElementById('btn-print');
+    if (printBtn) {
+      printBtn.addEventListener('click', function () { window.print(); });
+    }
+
+    // Restart button
+    var restartBtn = document.getElementById('btn-restart');
+    if (restartBtn) {
+      restartBtn.addEventListener('click', function () { restartQuiz(); });
+    }
+  }
+
+  function fallbackCopy(text, confirmEl) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); confirmEl.classList.add('visible'); setTimeout(function () { confirmEl.classList.remove('visible'); }, 3000); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+  /* =====================
+     RESTART
+  ===================== */
+  function restartQuiz() {
+    state.current = 1;
+    state.maxReached = 1;
+    state.answers = {};
+    state.iepRoute = false;
+    state.parentNotSure = false;
+    state.pathAFlag = false;
+    state.tone = 'standard';
+    state.history = [1];
+    document.getElementById('quiz-results').classList.remove('visible');
+    document.getElementById('quiz-results').innerHTML = '';
+    showQuestion(1);
+  }
+
+  /* =====================
+     UTIL
+  ===================== */
+  function escHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  /* =====================
+     NAV HAMBURGER
+  ===================== */
+  var toggle = document.querySelector('.nav-toggle');
+  var mobileNav = document.getElementById('mobile-nav');
+  if (toggle && mobileNav) {
+    toggle.addEventListener('click', function () {
+      var isOpen = mobileNav.classList.contains('open');
+      mobileNav.classList.toggle('open', !isOpen);
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      toggle.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+    });
+    mobileNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileNav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+      });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+        mobileNav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+  }
+
+  /* =====================
+     INIT
+  ===================== */
+  showQuestion(1);
+
+}());
+</script>
+
+</body>
+</html>
