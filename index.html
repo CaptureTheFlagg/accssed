@@ -828,6 +828,88 @@
     ]
   }
   </script>
+  <style>
+    /* =====================
+       MICRO-ANIMATIONS
+       All wrapped in prefers-reduced-motion: no-preference
+       so they are automatically disabled for users who need it.
+    ===================== */
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+
+      /* Hero: fade-in + upward slide on page load */
+      .hero {
+        animation: heroFadeUp 0.5s ease both;
+      }
+
+      /* Topic cards (index.html): lift on hover */
+      .card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      }
+      .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 28px rgba(28, 28, 28, 0.09);
+      }
+
+      /* Nav links: sliding underline on hover */
+      .nav-links a {
+        position: relative;
+        overflow: visible;
+      }
+      .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 1px;
+        left: 50%;
+        right: 50%;
+        height: 2px;
+        background: var(--accent-red, #D94F2B);
+        border-radius: 1px;
+        transition: left 0.2s ease, right 0.2s ease;
+        pointer-events: none;
+      }
+      .nav-links a:hover::after,
+      .nav-links a.active::after {
+        left: 8px;
+        right: 8px;
+      }
+
+      /* Buttons: slight lift + darken on hover */
+      .btn-primary {
+        transition: background 0.15s ease, transform 0.15s ease, color 0.15s ease;
+      }
+      .btn-primary:hover {
+        transform: translateY(-1px);
+      }
+      .btn-secondary {
+        transition: background 0.15s ease, transform 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+      }
+      .btn-secondary:hover {
+        transform: translateY(-1px);
+      }
+      .hero-cta {
+        transition: background 0.15s ease, transform 0.15s ease, color 0.15s ease;
+      }
+      .hero-cta:hover {
+        transform: translateY(-1px);
+      }
+
+      /* IO scroll fade-in */
+      .js-fade {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+      .js-fade.js-visible {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -1174,5 +1256,32 @@
     });
   </script>
 
+  <script>
+  /* Intersection Observer: fade-in sections as they scroll into view.
+     Skips elements already visible at page load.
+     Skips entirely if prefers-reduced-motion is set. */
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!('IntersectionObserver' in window)) return;
+    var vH = window.innerHeight || document.documentElement.clientHeight;
+    var observer = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('js-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+    var selectors = '.page-section, .card, .plan-card, .faq-item, .resource-card';
+    document.querySelectorAll(selectors).forEach(function (el) {
+      /* Only animate elements that start below the fold */
+      var rect = el.getBoundingClientRect();
+      if (rect.top >= vH - 40) {
+        el.classList.add('js-fade');
+        observer.observe(el);
+      }
+    });
+  }());
+  </script>
 </body>
 </html>
